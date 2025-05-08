@@ -7,10 +7,7 @@ import Github from "$components/Icons/Github.astro";
 import Mail from "$components/Icons/Mail.astro";
 ---
 
-<div
-  class="relative isolate py-32 bg-black/30 md:bg-transparent section pointer-events-none"
-  id="contact"
->
+<div class="relative isolate py-32 bg-black/30 md:bg-transparent section" id="contact">
   <div class="mx-auto max-w-5xl px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-3">
       <div>
@@ -38,12 +35,6 @@ import Mail from "$components/Icons/Mail.astro";
               <LinkedIn class="w-6 h-6" />
             </svelte:fragment>
             linkedin
-          </SocialLink>
-          <SocialLink href={SOCIALS.BLUESKY} class="mt-4">
-            <svelte:fragment slot="icon">
-              <Bluesky class="w-6 h-6" />
-            </svelte:fragment>
-            bluesky
           </SocialLink>
           <SocialLink href={SOCIALS.MAIL} class="mt-8">
             <svelte:fragment slot="icon">
