@@ -104,11 +104,10 @@
 
   <div class="hidden absolute bottom-2 left-2">
     <div
-      class="text-white text-sm mb-6 sm:mb-2 bg-black/50 backdrop-blur-sm px-3 py-2 rounded-xl mr-10"
-    >
+      class="text-white text-sm mb-6 sm:mb-2 bg-black/50 backdrop-blur-sm px-3 py-2 rounded-xl mr-10">
       this planet was created just for you, click on it to create a new one
     </div>
-    <button class="pointer-events-auto">
+    <button class="pointer-events-auto" aria-label="Create a new planet">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

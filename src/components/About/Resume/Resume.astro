@@ -1,9 +1,8 @@
 ---
-import enna from "$assets/about/logos/enna.png";
-import puppet from "$assets/about/logos/puppet.png";
-import tub from "$assets/about/logos/tub.png";
-import hyperlumen from "$assets/about/logos/hyperlumen.png";
-
+import amikom from "$assets/about/logos/amikom.png";
+import bangkit from "$assets/about/logos/Bangkit.png";
+import amcc from "$assets/about/logos/amcc.png";
+import freelance from "$assets/about/logos/freelance.png";
 import Role from "./Role.astro";
 import type { ImageMetadata } from "astro";
 
@@ -14,38 +13,51 @@ let resume: Array<{
   start: string | { label: string; dateTime: string };
   end: string | { label: string; dateTime: string };
 }> = [
-  // {
-  //   company: "hyperlumen",
-  //   title: "co-founder",
-  //   logo: hyperlumen,
-  //   start: "2023",
-  //   end: "2024",
-  // },
   {
-    company: "enna",
-    title: "student software engineer",
-    logo: enna,
-    start: "2022",
+    company: "Independent Freelancer",
+    title: "Mobile Developer & web developer",
+    logo: freelance,
+    start: "2023",
     end: {
       label: "present",
       dateTime: new Date().getFullYear().toString(),
     },
   },
   {
-    company: "puppet",
-    title: "co-founder",
-    logo: puppet,
-    start: "2022",
+    company: "Amikom Computer Club",
+    title: "Human Resource Department",
+    logo: amcc,
+    start: "June 2024",
     end: {
       label: "present",
       dateTime: new Date().getFullYear().toString(),
     },
   },
   {
-    company: "tu berlin",
-    title: "studying computer science",
-    logo: tub,
-    start: "2018",
+    company: "Bangkit 2024",
+    title: "Machine Learning student",
+    logo: bangkit,
+    start: "September 2024",
+    end: {
+      label: "December 2024",
+      dateTime: new Date().getFullYear().toString(),
+    },
+  },
+  {
+    company: "Amikom Computer Club",
+    title: "Head of Mobile Programming Division",
+    logo: amcc,
+    start: "December 2023",
+    end: {
+      label: "june 2024",
+      dateTime: new Date().getFullYear().toString(),
+    },
+  },
+  {
+    company: "Amikom yogyakarta",
+    title: "Bachelor informatics student",
+    logo: amikom,
+    start: "2022",
     end: {
       label: "present",
       dateTime: new Date().getFullYear().toString(),
