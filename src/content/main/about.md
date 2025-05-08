@@ -8,9 +8,9 @@ I wasn't born with a keyboard in my hands. Starting with nothing but curiosity a
 
 ## What I Do
 
-* Build intuitive mobile experiences with Flutter
-* Explore practical AI applications for real-world problems
-* Study Informatics while applying knowledge through hands-on projects
+* Build intuitive mobile experiences with Flutter  
+* Explore practical AI applications for real-world problems  
+* Study Informatics while applying knowledge through hands-on projects  
 
 ## Why I Build
 
@@ -18,10 +18,10 @@ There's nothing quite like the feeling of bringing an idea to life through code.
 
 ## Beyond the Screen
 
-When I'm not coding, you'll find me:
-* Working on experimental side projects
-* Contributing to tech communities in Yogyakarta
-* Connecting with fellow builders and dreamers
+When I'm not coding, you'll find me:  
+* Working on experimental side projects  
+* Contributing to tech communities in Yogyakarta  
+* Connecting with fellow builders and dreamers  
 
 ## Let's Create Together
 
