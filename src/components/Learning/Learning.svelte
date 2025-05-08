@@ -8,84 +8,74 @@
   }
 
   const learnings: Learning[] = [
-    {
-      title: "bluesky api and at protocol",
-      description:
-        "built way to many bluesky visualizations. lots of fun.",
-      date: "2024-11",
-    },
-    {
-      title: "Astro",
-      description:
-        "been really liking astro, reminds me of svelte, but even better for content driven static sites.",
-      date: "2024-10",
-    },
-    {
-      title: "blender",
-      description:
-        'making some low poly models in blender, lots of fun once you get over the "i\'m overwhelmed" feeling',
-      date: "2024-09",
-    },
-    {
-      title: "pixi.js",
-      description:
-        "been playing around with pixi.js for some game jams. awesome library for 2d games.",
-      date: "2024-07",
-    },
-    {
-      title: "rapier",
-      description:
-        "explored the internals of the physics engine rapier for a game engine i'm working on.",
-      date: "2024-06",
-    },
-    {
-      title: "supabase",
-      description:
-        "started using supabase for a few projects. still prefer mongodb as a database, but it has some cool features.",
-      date: "2024-05",
-    },
-    {
-      title: "unity and vr",
-      description:
-        "been working on a vr game in unity as part of a university project. uff, not a big fan of unity.",
-      date: "2024-03",
-    },
-    {
-      title: "figma",
-      description:
-        "playing around a bit designing some websites and app wireframes in figma",
-      date: "2024-01",
-    },
-    {
-      title: "threlte",
-      description:
-        "awesome library combining svelte and three.js. also used on this website.",
-      date: "2023-12",
-    },
-    {
-      title: "mongodb",
-      description: "switched from mysql to mongodb and never looked back.",
-      date: "2023-09",
-    },
-    {
-      title: "svelte and sveltekit",
-      description:
-        "love svelte, my favourite framework for web development. i use it for most of my personal projects, including this website.",
-      date: "2023-06",
-    },
-    {
-      title: "tailwindcss",
-      description:
-        "the best bad idea in web development. better than pure css by far. used in most of my newer projects including this website.",
-      date: "2023-05",
-    },
-    {
-      title: "react, next.js and reactnative",
-      description:
-        "not the biggest fan of react, but it's still the most popular framework out there and on the native side there's no good alternative yet.",
-      date: "2023-01",
-    },
-  ];
+  {
+    title: "flutter + bloc architecture",
+    description:
+      "using bloc for state management in multiple production-grade apps including Inventarya and AEDP. solid and scalable.",
+    date: "2025-04",
+  },
+  {
+    title: "firebase integration",
+    description:
+      "used firebase auth, firestore, and storage to build full-featured mobile apps with real-time syncing.",
+    date: "2025-04",
+  },
+  {
+    title: "multi-language content & i18n",
+    description:
+      "implemented dynamic translation system for subject names and content using the translator package in flutter.",
+    date: "2025-03",
+  },
+  {
+    title: "sveltekit & web dev",
+    description:
+      "explored sveltekit for fast static site generation. enjoyed the developer experience and simplicity compared to react.",
+    date: "2025-02",
+  },
+  {
+    title: "wound classification ml model",
+    description:
+      "developed image classification model for identifying wound types using tensorflow. deployed in kotlin-based app.",
+    date: "2025-01",
+  },
+  {
+    title: "nlp for content moderation",
+    description:
+      "built prototype system to detect and help take down illegal gambling websites using keyword-based NLP.",
+    date: "2024-12",
+  },
+  {
+    title: "tensorflow deployment",
+    description:
+      "experimented with tflite model deployment on android devices as part of the wound identification project.",
+    date: "2024-11",
+  },
+  {
+    title: "flutter firebase crud",
+    description:
+      "built full firebase CRUD functionality with custom roles (teacher, student, parent) in education apps.",
+    date: "2024-10",
+  },
+  {
+    title: "go_router in flutter",
+    description:
+      "replaced legacy navigation with declarative navigation using go_router, simplifying auth-based routing.",
+    date: "2024-09",
+  },
+  {
+    title: "deep learning specialization",
+    description:
+      "completed the deeplearning.ai specialization on coursera with strong focus on model training and best practices.",
+    date: "2024-06",
+  },
+  {
+    title: "machine learning + nlp",
+    description:
+      "finished nlp and ml specialization. loved the hands-on approach with attention, rnn, and transformers.",
+    date: "2024-05",
+  }
+];
+
 
   function formatDate(date: string) {
     return new Date(date)
