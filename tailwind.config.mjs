@@ -14,7 +14,10 @@ export default {
       colors: {
         accent: colors[ACCENT_COLOR.toLowerCase()],
         base: colors[BASE_COLOR.toLowerCase()],
-				background: colors[BASE_COLOR.toLowerCase()][950]
+        background: colors[BASE_COLOR.toLowerCase()][950],
+      },
+      fontFamily: {
+        sans: ['"Open Sans"', 'sans-serif'], // ⬅️ Tambahkan ini
       },
       typography: {
         DEFAULT: {

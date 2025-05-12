@@ -7,92 +7,93 @@
     date: string;
   }
 
-  const learnings: Learning[] = [
-    {
-      title : "store listing Google play",
-      description:
-        "created a store listing for the app on google play. included screenshots, descriptions, and other details.",
-      date: "2024-01",
-    },
-    {
-      title: "flutter & dart",
-      description:
-        "built some mobile apps using flutter and dart for android ",
-      date: "2022-02",
-    },
-    {
-      title: "go_router in flutter",
-      description:
-        "replaced legacy navigation with declarative navigation using go_router, simplifying auth-based routing.",
-      date: "2024-03",
-    },
-    {
-      title: "flutter + bloc architecture",
-      description:
-        "using bloc for state management in multiple production-grade apps including Inventarya and AEDP. solid and scalable.",
-      date: "2024-04",
-    },
-    {
-      title: "firebase integration",
-      description:
-        "used firebase auth, firestore, and storage to build full-featured mobile apps with real-time syncing.",
-      date: "2024-04",
-    },
-    {
-      title: "multi-language content & i18n",
-      description:
-        "implemented dynamic translation system for subject names and content using the translator package in flutter.",
-      date: "2024-05",
-    },
-    {
-      title: "flutter payments gateway integration",
-      description:
-        "integrated payments gateway for in-app purchases and subscriptions using flutter's in_app_purchase package.",
-      date: "2025-05",
-    },
-    {
-      title: "flutter bitcoin wallet integration",
-      description:
-        "integrated bitcoin wallet functionality using flutter's bitcoin package for secure transactions.",
-      date: "2025-05",
-    },
-    {
-      title: "sveltekit & web dev",
-      description:
-        "explored sveltekit for fast static site generation. enjoyed the developer experience and simplicity compared to react.",
-      date: "2025-02",
-    },
-    {
-      title: "wound classification ml model",
-      description:
-        "developed image classification model for identifying wound types using tensorflow. deployed in kotlin-based app.",
-      date: "2024-11",
-    },
-    {
-      title: "nlp for content moderation",
-      description:
-        "built prototype system to detect and help take down illegal gambling websites using keyword-based NLP.",
-      date: "2025-01",
-    },
-    {
-      title: "tensorflow deployment",
-      description:
-        "experimented with tflite model deployment on android devices as part of the wound identification project.",
-      date: "2024-10",
-    },
-    {
-      title: "deep learning specialization",
-      description:
-        "completed the deeplearning.ai specialization on coursera with strong focus on model training and best practices.",
-      date: "2024-06",
-    },
-    {
-      title: "machine lerning specialization",
-      description:
-        "finished nlp and ml specialization. loved the hands-on approach with attention, rnn, and transformers.",
-      date: "2024-05",
-    }
-  ];
+const learnings: Learning[] = [
+  {
+    title: "Store Listing on Google Play",
+    description:
+      "Created a store listing for the app on Google Play. Included screenshots, descriptions, and other details.",
+    date: "2024-01",
+  },
+  {
+    title: "Flutter & Dart",
+    description:
+      "Built several mobile apps using Flutter and Dart for Android.",
+    date: "2022-02",
+  },
+  {
+    title: "GoRouter in Flutter",
+    description:
+      "Replaced legacy navigation with declarative navigation using GoRouter, simplifying auth-based routing.",
+    date: "2024-03",
+  },
+  {
+    title: "Flutter + BLoC Architecture",
+    description:
+      "Used BLoC for state management in multiple production-grade apps including Inventarya and AEDP. Solid and scalable.",
+    date: "2024-04",
+  },
+  {
+    title: "Firebase Integration",
+    description:
+      "Used Firebase Auth, Firestore, and Storage to build full-featured mobile apps with real-time syncing.",
+    date: "2024-04",
+  },
+  {
+    title: "Multi-language Content & i18n",
+    description:
+      "Implemented a dynamic translation system for subject names and content using the translator package in Flutter.",
+    date: "2024-05",
+  },
+  {
+    title: "Flutter Payments Gateway Integration",
+    description:
+      "Integrated payment gateway for in-app purchases and subscriptions using Flutter's in_app_purchase package.",
+    date: "2025-05",
+  },
+  {
+    title: "Flutter Bitcoin Wallet Integration",
+    description:
+      "Integrated Bitcoin wallet functionality using Flutter's bitcoin package for secure transactions.",
+    date: "2025-05",
+  },
+  {
+    title: "SvelteKit & Web Development",
+    description:
+      "Explored SvelteKit for fast static site generation. Enjoyed the developer experience and simplicity compared to React.",
+    date: "2025-02",
+  },
+  {
+    title: "Wound Classification ML Model",
+    description:
+      "Developed an image classification model for identifying wound types using TensorFlow. Deployed in a Kotlin-based app.",
+    date: "2024-11",
+  },
+  {
+    title: "NLP for Content Moderation",
+    description:
+      "Built a prototype system to detect and help take down illegal gambling websites using keyword-based NLP.",
+    date: "2025-01",
+  },
+  {
+    title: "TensorFlow Deployment",
+    description:
+      "Experimented with TFLite model deployment on Android devices as part of the wound identification project.",
+    date: "2024-10",
+  },
+  {
+    title: "Deep Learning Specialization",
+    description:
+      "Completed the DeepLearning.AI specialization on Coursera with a strong focus on model training and best practices.",
+    date: "2024-06",
+  },
+  {
+    title: "Machine Learning Specialization",
+    description:
+      "Finished NLP and ML specializations. Enjoyed the hands-on approach with Attention, RNN, and Transformers.",
+    date: "2024-05",
+  }
+];
+
 
   function formatDate(date: string) {
     return new Date(date)
@@ -100,7 +101,7 @@
         year: "numeric",
         month: "long",
       })
-      .toLowerCase();
+      // .toLowerCase();
   }
 
   let showAll = false;
