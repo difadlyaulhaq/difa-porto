@@ -1,5 +1,5 @@
 ---
-name: 'svelte depth 3d component'
+name: 'WISE: WOUND IDENTIFICATION SYSTEM'
 date: '2024-05-20'
 featured: true
 
@@ -7,30 +7,33 @@ thumbnail: '/src/assets/projects/svelte-depth-3d/thumbnail.png'
 video: '/src/assets/projects/svelte-depth-3d/video-thumbnail.mp4'
 aspect: 'aspect-[9/16]'
 projectUrl: 'https://flo-bit.dev/svelte-depth-3d-component/'
-codeUrl: 'https://github.com/flo-bit/svelte-depth-3d-component'
+
 
 projectPageVersion: 'tiered'
-demo: 'depth3d'
 tags:
-  - 'svelte'
-  - 'depthmap'
-  - '3d'
-  - 'threlte'
+  - 'kotlin'
+  - 'machine learning'
+  - 'flask'
+  - 'tensorflow'
 
 mainTags:
-  - 'svelte component'
+  - 'kotlin'
+  - 'machine learning'
+  - 'flask'
+
+images:
+  - '/src/assets/projects/life/image1.png'
+  - '/src/assets/projects/svelte-depth-3d/Desktop .png'
+  - '/src/assets/projects/life/image3.png'
+  - '/src/assets/projects/life/image2.png'
 ---
-import ProjectTiered from "$components/ProjectPages/ProjectTiered.astro";
-import Depth3DDemo from "$components/Demos/svelte-depth-3d-effect/Depth3DDemo.svelte";
+import ProjectGrid from "$components/ProjectPages/ProjectGrid.astro";
 
-<ProjectTiered project={frontmatter}>
-  <div slot="demo">
-    <Depth3DDemo client:load />
-  </div>
-
-svelte component that turns an image plus depth map into a kind of 3d image.
-
-### demo 
-
-click on the image to switch to the next image.
-</ProjectTiered>
+<ProjectGrid project={frontmatter}>
+Luarkampus is a platform that helps students discover
+scholarships and practical tips to achieve them. I
+contributed as a UI/UX designer, focusing on creating an
+intuitive user journey, clean interface, and responsive
+design to ensure accessibility and engagement across
+devices.
+</ProjectGrid>
