@@ -1,5 +1,6 @@
-# things i've made
+## Highlighted Projects
 
-i've worked on lots of little side projects over the years, here are some recent ones. 
-many of them are open-source, so if you see something that piques your interest, check out the code. 
-[see all projects →](/projects)
+I love turning ideas into real products, and these projects are a reflection of that.  
+From hackathons to weekend experiments, here are some of the things I've recently built.  
+Curious about the code? Many are open-source and open for feedback.  
+[See all projects →](/projects)

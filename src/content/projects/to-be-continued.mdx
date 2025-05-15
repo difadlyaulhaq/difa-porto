@@ -1,0 +1,27 @@
+---
+name: 'To be continued'
+date: '2023-04-07'
+featured: true
+thumbnail: '/src/assets/projects/marblellous/image.png'
+aspect: 'aspect-[9/10]'
+projectUrl: 'https://youtu.be/flapI41YwWc?si=MGRURtjPQ9oqml0M'
+codeUrl: 'https://youtu.be/flapI41YwWc?si=MGRURtjPQ9oqml0M'
+projectPageVersion: 'full'
+tags:
+  - 'To be continued'
+mainTags:
+  - 'To be continued'
+---
+
+import ProjectGrid from "$components/ProjectPages/ProjectGrid.astro";
+
+<ProjectGrid project={frontmatter}>
+  <div slot="demo" class="relative w-full h-full">
+    <img 
+      src={frontmatter.thumbnail} 
+      alt="Project Thumbnail"
+      class="w-full h-400 object-cover rounded-xl"
+      loading="lazy"
+    />
+  </div>
+</ProjectGrid>
