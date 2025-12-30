@@ -1,186 +1,163 @@
 // src/components/About/experienceData.js
-// Import logo images
-import freelanceLogo from "../../assets/about/logos/freelance.png";
-import amccLogo from "../../assets/about/logos/amcc.png";
-import bangkitLogo from "../../assets/about/logos/Bangkit.png";
-import amikomLogo from "../../assets/about/logos/amikom.png";
 
-// GANTI DATA INI DENGAN PENGALAMAN ASLI KAMU!
+import alfajrImg from "../../assets/about/experience/alfajr_work.png"; 
+import africaImg from "../../assets/about/experience/africa_project.png"; 
+import bangkitImg from "../../assets/about/experience/bangkit_cert.png"; 
+import amccImg from "../../assets/about/experience/amcc_activity.png"; 
+import competitionImg from "../../assets/about/experience/winning_moment.png";
+import campusImg from "../../assets/about/experience/campus_life.png";
+
 export const experiences = [
   {
     id: 1,
-    type: 'work', // work | education | organization | award
-    image: freelanceLogo,
-    title: 'Independent Freelancer',
-    role: 'Mobile & Web Developer',
-    period: '2023 - Present',
+    type: 'work',
+    image: alfajrImg,
+    title: 'Software Developer (Freelance)',
+    role: 'Alfajr Umroh',
+    period: 'Nov 2025 - Dec 2025',
     location: 'Remote',
-    description: 'Delivering high-quality mobile and web solutions for various clients worldwide. Specializing in cross-platform development with Flutter, React Native, and modern web frameworks like Next.js and Astro.',
+    description: 'Took on the challenge of building a "Zero-Leak" e-learning ecosystem for corporate training. The goal was to create a platform as secure as it is seamless.',
     highlights: [
-      'Built 15+ mobile applications for clients across different industries including e-commerce, healthcare, and education',
-      'Worked with international clients from USA, Singapore, and Europe with 100% satisfaction rate',
-      'Specialized in Flutter, React Native, and Next.js with focus on performance optimization',
-      'Maintained 5-star rating across all projects with repeat client rate of 80%'
+      'Engineered a "Hybrid Guard" system using Next.js 15 and Capacitor to prevent data leaks.',
+      'Developed proactive screen protection: anti-screenshot, anti-recording, and smart blur technology.',
+      'Implemented logic to enforce 90% video watch-time before lesson completion.',
+      'Built a full-featured Admin Dashboard for tracking employee progress and exporting data.'
     ],
-    skills: ['Flutter', 'React Native', 'Next.js', 'Firebase', 'Node.js', 'TypeScript', 'Tailwind CSS'],
+    skills: ['Next.js 15', 'TypeScript', 'Firebase', 'System Security', 'Capacitor'],
     achievements: [
-      'Increased client app downloads by 200% through performance optimization',
-      'Reduced development time by 40% using component-based architecture and reusable libraries'
+      'Successfully delivered a high-security platform protecting sensitive internal company data.',
+      'Mastered the integration of web-to-mobile wrappers with native security modules.'
     ]
   },
   {
     id: 2,
-    type: 'organization',
-    image: amccLogo,
-    title: 'Amikom Computer Club',
-    role: 'Human Resource Department',
-    period: 'June 2024 - Present',
-    location: 'Yogyakarta, Indonesia',
-    description: 'Managing human resources, recruitment processes, and member development programs for Amikom Computer Club, the university\'s largest tech community with 200+ active members.',
+    type: 'work',
+    image: africaImg,
+    title: 'Mobile App Developer',
+    role: 'Omar Bin Khattab School (RA)',
+    period: 'Oct 2024 - June 2025',
+    location: 'Guinea-Bissau, West Africa (Remote)',
+    description: 'My first major international milestone. I developed the "Automated Educational Data Platform" (AEDP) to digitize school operations in West Africa, bridging language barriers and technical gaps.',
     highlights: [
-      'Successfully recruited and onboarded 100+ new members through innovative digital campaigns',
-      'Organized 10+ technical workshops covering topics from mobile dev to cloud computing',
-      'Improved member retention rate from 60% to 85% through better engagement programs',
-      'Developed comprehensive onboarding program reducing learning curve by 50%'
+      'Built a multilingual app (Arabic, English, Portuguese) to serve a diverse international user base.',
+      'Created a Role-Based Access Control (RBAC) system for secure interaction between teachers, students, and parents.',
+      'Enabled real-time grade uploads and offline-first data synchronization using Firebase.',
+      'Solved the challenge of delivering seamless performance in an area with varying internet connectivity.'
     ],
-    skills: ['Leadership', 'Event Management', 'Team Building', 'Public Speaking', 'Communication'],
+    skills: ['Flutter', 'Dart', 'Firebase Firestore', 'Internationalization (i18n)', 'Remote Collaboration'],
     achievements: [
-      'Awarded "Best HR Team of the Year" for outstanding member satisfaction scores',
-      'Created inclusive community culture that increased participation by 70%'
+      'Successfully digitized the academic management of a school abroad.',
+      'Delivered a robust product that handles 3 different languages flawlessly.'
     ]
   },
   {
     id: 3,
     type: 'education',
-    image: bangkitLogo,
-    title: 'Bangkit Academy 2024',
-    role: 'Machine Learning Path',
+    image: bangkitImg,
+    title: 'Bangkit Academy By Google, GoTo, Traveloka',
+    role: 'Machine Learning Cohort (Distinction Graduate)',
     period: 'Sept 2024 - Dec 2024',
-    location: 'Google, GoTo, Traveloka Partnership',
-    description: 'Intensive career readiness program led by Google, GoTo, and Traveloka focusing on Machine Learning, Cloud Computing, and professional development with industry-standard curriculum.',
+    location: 'Remote',
+    description: 'Selected as a top student for this intensive career accelerator. I spent 900+ hours diving deep into the math and code behind Artificial Intelligence.',
     highlights: [
-      'Graduated with distinction from Google-led Machine Learning program',
-      'Built capstone project: AI-powered health diagnosis app with 94% accuracy',
-      'Collaborated with cross-functional teams (ML engineers, Android devs, Cloud specialists)',
-      'Gained hands-on experience with TensorFlow, Keras, and Google Cloud Platform'
+      'Graduated with Distinction (Top Tier Performance).',
+      'Specialized in Deep Learning, NLP, and Computer Vision using TensorFlow.',
+      'Built "WISE" as a Capstone Project: An AI app that identifies wounds via camera and suggests first aid.',
+      'Optimized heavy ML models to run smoothly on mobile devices using TFLite.'
     ],
-    skills: ['TensorFlow', 'Python', 'Deep Learning', 'Computer Vision', 'Google Cloud Platform', 'Soft Skills'],
+    skills: ['Machine Learning', 'TensorFlow', 'Computer Vision', 'Python', 'Soft Skills'],
     achievements: [
-      'Capstone project achieved 94% accuracy in disease prediction using CNN',
-      'Received recommendation letter from Google mentor for outstanding performance'
+      'Earned the TensorFlow Developer Professional Certificate from DeepLearning.AI.',
+      'Combined mobile dev skills with AI to create practical, life-saving technology.'
     ]
   },
   {
     id: 4,
-    type: 'award',
-    image: amikomLogo, // Placeholder
-    title: 'Gemastik XVII 2024',
-    role: 'UX Design Category - National Finalist',
-    period: 'August 2024',
-    location: 'National Competition - Ministry of Education',
-    description: 'Competed in Gemastik (Indonesia\'s most prestigious IT competition) organized by Ministry of Education. Reached national finals in UX Design category against 500+ teams from top universities.',
+    type: 'organization',
+    image: amccImg,
+    title: 'Amikom Computer Club (AMCC)',
+    role: 'Coordinator & Mentor',
+    period: 'Nov 2023 - Nov 2025',
+    location: 'Yogyakarta',
+    description: 'Where I learned that code is better when shared. I transitioned from a mentor to a leader, managing people and technical divisions in one of the largest tech communities on campus.',
     highlights: [
-      'Selected as one of top 10 teams from 500+ participants nationwide',
-      'Designed innovative solution for elderly healthcare accessibility with focus on usability',
-      'Presented solution to panel of industry experts and ministry officials',
-      'Received mentorship from senior UX designers at major tech companies like Tokopedia and Gojek'
+      'Led the Mobile Programming Division, mentoring 180+ students in Flutter development.',
+      'Later served in Human Resources, managing recruitment and talent development for the organization.',
+      'Designed curriculums and taught classes to 600+ newcomers interested in tech.',
+      'Fostered a culture of innovation and collaborative learning.'
     ],
-    skills: ['UX Design', 'Figma', 'User Research', 'Prototyping', 'Presentation', 'Design Thinking'],
+    skills: ['Leadership', 'Public Speaking', 'Mentoring', 'Event Management', 'Flutter'],
     achievements: [
-      'Competed against teams from UI, ITB, ITS, UGM and other top universities',
-      'Design solution praised for innovation, usability, and strong social impact'
+      'Helped hundreds of students write their first lines of mobile code.',
+      'Successfully managed the "people" side of a tech organization.'
     ]
   },
   {
     id: 5,
     type: 'award',
-    image: amccLogo, // Placeholder
-    title: 'Tech Innovation Hackathon 2024',
-    role: 'Full-Stack Mobile Development - 1st Place',
-    period: 'March 2024',
-    location: 'Yogyakarta',
-    description: 'Won first place in 48-hour hackathon by building innovative waste management solution using IoT sensors, mobile app, and real-time data analytics.',
+    image: competitionImg,
+    title: 'Competitive Achievements',
+    role: 'National Winner & Finalist',
+    period: '2024 - 2025',
+    location: 'Indonesia',
+    description: 'I love testing my skills against the best. Participating in hackathons and competitions pushes me to innovate under pressure.',
     highlights: [
-      'Led team of 4 developers to victory against 30+ competing teams',
-      'Built complete IoT-enabled waste tracking system in just 48 hours',
-      'Implemented real-time monitoring dashboard with Firebase and Flutter',
-      'Secured Rp 15,000,000 prize money and incubation program offer from local government'
+      '🏆 1st Place (Juara Utama): AI Ignition Informatics 2024.',
+      '🥈 Joint Winner (Juara Harapan): "Budaya Go" - Ministry of Culture RI 2025.',
+      '🥉 Finalist: App Development Competition MAGE 11 at ITS 2025.',
+      '🏅 3rd Runner Up: National IT Competition at Amikom Purwokerto 2025.'
     ],
-    skills: ['Flutter', 'Firebase', 'IoT', 'Arduino', 'Rapid Prototyping', 'Team Leadership'],
+    skills: ['Innovation', 'Pitching', 'Rapid Prototyping', 'Teamwork'],
     achievements: [
-      'Judges highlighted exceptional technical execution and real-world applicability',
-      'Solution adopted by local waste management company for pilot program'
+      'Consistently recognized at the national level for innovation in AI and Mobile Development.'
     ]
   },
   {
     id: 6,
-    type: 'organization',
-    image: amccLogo,
-    title: 'Amikom Computer Club',
-    role: 'Head of Mobile Programming Division',
-    period: 'Dec 2023 - June 2024',
-    location: 'Yogyakarta, Indonesia',
-    description: 'Led mobile development division with 40+ members. Created comprehensive curriculum, mentored junior developers, and oversaw multiple mobile app projects.',
-    highlights: [
-      'Mentored 30+ junior developers in Flutter, React Native, and mobile best practices',
-      'Launched 5 successful mobile projects with combined 50,000+ downloads',
-      'Organized weekly coding sessions, code reviews, and mobile dev workshops',
-      'Increased division member skill ratings by 65% based on project assessments'
-    ],
-    skills: ['Mentorship', 'Flutter', 'React Native', 'Project Management', 'Curriculum Design'],
-    achievements: [
-      '3 mentees won individual competitions during mentorship period',
-      'Division projects featured in university showcase and received funding'
-    ]
-  },
-  {
-    id: 7,
     type: 'education',
-    image: amikomLogo,
+    image: campusImg,
     title: 'Universitas Amikom Yogyakarta',
     role: 'Bachelor of Informatics',
     period: '2022 - Present',
-    location: 'Yogyakarta, Indonesia',
-    description: 'Pursuing Bachelor\'s degree in Informatics with focus on Software Engineering, Mobile Development, and Machine Learning. Active participant in multiple student organizations and competitions.',
+    location: 'Yogyakarta',
+    description: 'Currently pursuing my degree with a focus on Software Engineering. I strive to apply every theory I learn in class directly to real-world projects.',
     highlights: [
-      'Maintaining cumulative GPA of 3.75/4.00 (Dean\'s List for 4 consecutive semesters)',
-      'Active member in 3+ student organizations including tech communities',
-      'Completed 12+ major projects including web apps, mobile apps, and ML systems',
-      'Participated in 5+ national-level competitions with multiple finalist achievements'
+      'Current GPA: 3.71 / 4.00.',
+      'Thesis Topic: Applying Transformer Models for Named Entity Recognition (NER) in literature.',
+      'Active participant in bridging the gap between academic research and practical industry application.'
     ],
-    skills: ['Algorithms', 'Data Structures', 'Software Engineering', 'Database Systems', 'Web Development', 'Mobile Development'],
+    skills: ['Data Structures', 'Algorithms', 'Academic Research', 'Critical Thinking'],
     achievements: [
-      'Dean\'s List Award for 4 consecutive semesters',
-      'Best Final Project Award nominee for innovative mobile solution'
+      'Maintained academic excellence while working as a freelancer and organization leader.'
     ]
-  },
+  }
 ];
 
 export const typeConfig = {
   work: {
     icon: 'Briefcase',
-    label: 'Work Experience',
+    label: 'Professional Work',
     color: 'from-blue-500 to-cyan-500',
     bgColor: 'bg-blue-500/10',
     borderColor: 'border-blue-500/30'
   },
   education: {
     icon: 'GraduationCap',
-    label: 'Education',
+    label: 'Education & Training',
     color: 'from-purple-500 to-pink-500',
     bgColor: 'bg-purple-500/10',
     borderColor: 'border-purple-500/30'
   },
   organization: {
     icon: 'Users',
-    label: 'Organization',
+    label: 'Leadership & Community',
     color: 'from-green-500 to-emerald-500',
     bgColor: 'bg-green-500/10',
     borderColor: 'border-green-500/30'
   },
   award: {
     icon: 'Trophy',
-    label: 'Achievement',
+    label: 'Awards & Honors',
     color: 'from-yellow-500 to-orange-500',
     bgColor: 'bg-yellow-500/10',
     borderColor: 'border-yellow-500/30'
