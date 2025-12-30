@@ -1,32 +1,16 @@
-# Difa: Mobile Developer & AI Explorer
+---
+title: "About Me"
+description: "Software Engineer, AI Explorer, and professional bug hunter."
+---
 
-From zero coding experience to building tomorrow's solutions in Yogyakarta.
+## Hi, I'm Difa! 👋
 
-## My Journey
+I'm a **Software Engineer** based in Yogyakarta who genuinely enjoys the chaos of learning new things.
 
-I wasn't born with a keyboard in my hands. Starting with nothing but curiosity and determination, I taught myself mobile development through late nights and countless debugging sessions. What began as tinkering turned into a passion that drives me every day.
+I started my journey building mobile apps, but my curiosity wouldn't let me stay in one lane. Lately, I’ve been obsessing over **secure web architectures** and **integrating AI** into places it actually belongs—like creating "Phygital" experiences that merge cultural heritage with blockchain, or building smart first-aid assistants that can literally see wounds.
 
-## What I Do
+I thrive on the *"I have no idea how to do this, but I'll figure it out by tomorrow"* energy. Whether it's mentoring students or staying up late to optimize a TensorFlow model, I'm always chasing that next "Aha!" moment.
 
-* Build intuitive mobile experiences with Flutter  
-* Explore practical AI applications for real-world problems  
-* Study Informatics while applying knowledge through hands-on projects  
+When I'm not writing code (or debugging code I wrote 5 minutes ago), I'm probably exploring new tech stacks or connecting with fellow builders.
 
-## Why I Build
-
-There's nothing quite like the feeling of bringing an idea to life through code. I'm fascinated by technology that makes a difference—not just innovation for its own sake, but solutions that solve genuine problems.
-
-## Beyond the Screen
-
-When I'm not coding, you'll find me:  
-* Working on experimental side projects  
-* Contributing to tech communities in Yogyakarta  
-* Connecting with fellow builders and dreamers  
-
-## Let's Create Together
-
-Whether you have a project idea, technical question, or just want to chat about the future of mobile and AI—I'd love to connect.
-
-[Reach Out](#contact)
-
-*"The joy isn't in knowing everything, but in learning something new every day."*
+Let's build something cool—or at least something that compiles on the first try! 🚀
