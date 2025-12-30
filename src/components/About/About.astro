@@ -18,11 +18,26 @@ const optimizedMe = await getImage({
 
 const optimizedExperiences = await Promise.all(
   experiences.map(async (exp) => {
-    const optimizedImage = await getImage({
-      src: exp.image,
-      width: 600,
-      format: 'webp'
-    });
+    let optimizedImageSrc;
+    if (Array.isArray(exp.image)) {
+        const optimizedImages = await Promise.all(exp.image.map(async (img) => {
+            const opt = await getImage({
+                src: img,
+                width: 600,
+                format: 'webp'
+            });
+            return opt.src;
+        }));
+        optimizedImageSrc = optimizedImages;
+    } else {
+        const optimizedImage = await getImage({
+            src: exp.image,
+            width: 600,
+            format: 'webp'
+        });
+        optimizedImageSrc = optimizedImage.src;
+    }
+
     const optimizedLogo = await getImage({
       src: exp.logo,
       width: 200,
@@ -30,7 +45,7 @@ const optimizedExperiences = await Promise.all(
     });
     return {
       ...exp,
-      image: optimizedImage.src,
+      image: optimizedImageSrc,
       logo: optimizedLogo.src
     };
   })

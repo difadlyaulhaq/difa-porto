@@ -2,10 +2,11 @@
 
 import alfajrImg from "../../assets/about/experience/alfajr_work.png"; 
 import africaImg from "../../assets/about/experience/africa_project.png"; 
-import bangkitImg from "../../assets/about/experience/bangkit_cert.png"; 
+import bangkitImg from "../../assets/about/experience/Bangkit-meet.png"; 
 import amccImg from "../../assets/about/experience/amcc_activity.png"; 
 import competitionImg from "../../assets/about/experience/winning_moment.png";
 import campusImg from "../../assets/about/experience/campus_life.png";
+
 
 // Import logos
 import freelanceLogo from "../../assets/about/logos/freelance.png";
@@ -18,7 +19,7 @@ export const experiences = [
   {
     id: 1,
     type: 'work',
-    image: alfajrImg,
+    image: [alfajrImg, africaImg],
     logo: alfajrLogo,
     title: 'Software Developer (Freelance)',
     role: 'Alfajr Umroh',
