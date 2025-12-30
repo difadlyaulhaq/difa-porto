@@ -5,10 +5,33 @@ import Bluesky from "$components/Icons/Bluesky.astro";
 import LinkedIn from "$components/Icons/LinkedIn.astro";
 import Github from "$components/Icons/Github.astro";
 import Mail from "$components/Icons/Mail.astro";
+import LiquidEther from "../Hero/LiquidEther.svelte";
 ---
 
-<div class="relative isolate py-32 bg-black/30 md:bg-transparent section" id="contact">
-  <div class="mx-auto max-w-5xl px-6 lg:px-8">
+<div class="relative isolate py-32 section overflow-hidden bg-black" id="contact">
+  <!-- Background: Liquid Ether -->
+  <div class="absolute inset-0 z-0">
+    <LiquidEther
+        client:visible
+        colors={['#22d3ee', '#34d399', '#a78bfa']} 
+        mouseForce={20}
+        cursorSize={100}
+        isViscous={false}
+        viscous={30}
+        iterationsViscous={32}
+        iterationsPoisson={32}
+        resolution={0.5}
+        isBounce={false}
+        autoDemo={true}
+        autoSpeed={0.5}
+        autoIntensity={2.2}
+        takeoverDuration={0.25}
+        autoResumeDelay={3000}
+        autoRampDuration={0.6}
+    />
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-3">
       <div>
         <h2

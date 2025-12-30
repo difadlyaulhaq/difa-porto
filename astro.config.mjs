@@ -5,11 +5,12 @@ import { resolve } from "path";
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import svelte from '@astrojs/svelte';
+import react from '@astrojs/react';
 import { BASE, SITE } from './src/config';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx(), svelte()],
+  integrations: [tailwind(), mdx(), svelte(), react()],
   vite: {
     resolve: {
       alias: {
