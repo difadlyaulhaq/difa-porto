@@ -221,17 +221,14 @@ export default function BounceCards({
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
-    // Initial check
     handleResize();
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    if (isMobile) return; // Skip GSAP animation on mobile
+  const scaleFactor = isMobile ? 0.5 : 1;
 
+  useEffect(() => {
     gsap.fromTo(
       '.card',
       { scale: 0 },
@@ -242,7 +239,7 @@ export default function BounceCards({
         delay: animationDelay
       }
     );
-  }, [animationDelay, animationStagger, easeType, isMobile]);
+  }, [animationDelay, animationStagger, easeType]);
 
   const getNoRotationTransform = transformStr => {
     const hasRotate = /rotate\([\s\S]*?\)/.test(transformStr);
@@ -255,26 +252,34 @@ export default function BounceCards({
     }
   };
 
+  const getScaledTransform = (transformStr) => {
+    if (!isMobile) return transformStr;
+    // Scale translate values
+    return transformStr.replace(/translate\(([-0-9.]+)px\)/g, (_, val) => {
+        return `translate(${parseFloat(val) * scaleFactor}px)`;
+    });
+  };
+
   const getPushedTransform = (baseTransform, offsetX) => {
     const translateRegex = /translate\(([-0-9.]+)px\)/;
     const match = baseTransform.match(translateRegex);
     if (match) {
       const currentX = parseFloat(match[1]);
-      const newX = currentX + offsetX;
+      const newX = currentX + offsetX * scaleFactor;
       return baseTransform.replace(translateRegex, `translate(${newX}px)`);
     } else {
-      return baseTransform === 'none' ? `translate(${offsetX}px)` : `${baseTransform} translate(${offsetX}px)`;
+      return baseTransform === 'none' ? `translate(${offsetX} * scaleFactor}px)` : `${baseTransform} translate(${offsetX * scaleFactor}px)`;
     }
   };
 
   const pushSiblings = hoveredIdx => {
-    if (!enableHover || isMobile) return;
+    if (!enableHover) return;
 
     items.forEach((_, i) => {
       const selector = `.card-${i}`;
       gsap.killTweensOf(selector);
 
-      const baseTransform = transformStyles[i] || 'none';
+      const baseTransform = getScaledTransform(transformStyles[i] || 'none');
 
       if (i === hoveredIdx) {
         const noRotation = getNoRotationTransform(baseTransform);
@@ -303,13 +308,13 @@ export default function BounceCards({
   };
 
   const resetSiblings = () => {
-    if (!enableHover || isMobile) return;
+    if (!enableHover) return;
 
     items.forEach((_, i) => {
       const selector = `.card-${i}`;
       gsap.killTweensOf(selector);
 
-      const baseTransform = transformStyles[i] || 'none';
+      const baseTransform = getScaledTransform(transformStyles[i] || 'none');
       gsap.to(selector, {
         transform: baseTransform,
         duration: 0.4,
@@ -322,73 +327,43 @@ export default function BounceCards({
   return (
     <>
       <div
-        className={`relative flex items-center justify-center mx-auto ${className} ${isMobile ? 'flex-col' : ''}`}
+        className={`relative flex items-center justify-center mx-auto ${className}`}
         style={{
-          width: isMobile ? '100%' : containerWidth,
-          height: isMobile ? 'auto' : containerHeight
+          width: isMobile ? '100%' : containerWidth * scaleFactor,
+          height: containerHeight * scaleFactor,
+          maxWidth: '100vw'
         }}
       >
-        {isMobile ? (
-           <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 py-4 w-full px-4 no-scrollbar">
-             {items.map((item, idx) => (
-               <div
-                 key={idx}
-                 className="snap-center flex-shrink-0 border-4 border-white rounded-[20px] overflow-hidden cursor-pointer bg-zinc-900 shadow-lg relative"
-                 style={{
-                   width: 280, // Fixed width for mobile cards
-                   height: 200
-                 }}
-                 onClick={() => setSelectedItem(item)}
-               >
-                 {Array.isArray(item.image) ? (
-                     <div className="w-full h-full pointer-events-none">
-                         <Carousel 
-                             items={item.image} 
-                             baseWidth={280} 
-                             autoplay={true}
-                             loop={true}
-                             showDots={false}
-                             padding={0}
-                         />
-                     </div>
-                 ) : (
-                     <img className="w-full h-full object-cover" src={item.image} alt={item.title || `card-${idx}`} />
-                 )}
-               </div>
-             ))}
-           </div>
-        ) : (
-            items.map((item, idx) => (
-            <div
-                key={idx}
-                className={`card card-${idx} absolute border-8 border-white rounded-[30px] overflow-hidden cursor-pointer hover:border-cyan-400/50 transition-colors duration-300 bg-zinc-900`}
-                style={{
-                width: cardWidth,
-                height: cardHeight,
-                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-                transform: transformStyles[idx] || 'none'
-                }}
-                onMouseEnter={() => pushSiblings(idx)}
-                onMouseLeave={resetSiblings}
-                onClick={() => setSelectedItem(item)}
-            >
-                {Array.isArray(item.image) ? (
-                    <div className="w-full h-full pointer-events-none">
-                        <Carousel 
-                            items={item.image} 
-                            baseWidth={cardWidth} 
-                            autoplay={true}
-                            loop={true}
-                            showDots={false}
-                            padding={0}
-                        />
-                    </div>
-                ) : (
-                    <img className="w-full h-full object-cover" src={item.image} alt={item.title || `card-${idx}`} />
-                )}
-            </div>
-            ))
-        )}
+        {items.map((item, idx) => (
+          <div
+            key={idx}
+            className={`card card-${idx} absolute border-4 md:border-8 border-white rounded-[20px] md:rounded-[30px] overflow-hidden cursor-pointer hover:border-cyan-400/50 transition-colors duration-300 bg-zinc-900`}
+            style={{
+              width: cardWidth * scaleFactor,
+              height: cardHeight * scaleFactor,
+              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+              transform: getScaledTransform(transformStyles[idx] || 'none')
+            }}
+            onMouseEnter={() => pushSiblings(idx)}
+            onMouseLeave={resetSiblings}
+            onClick={() => setSelectedItem(item)}
+          >
+            {Array.isArray(item.image) ? (
+                <div className="w-full h-full pointer-events-none">
+                    <Carousel 
+                        items={item.image} 
+                        baseWidth={cardWidth * scaleFactor} 
+                        autoplay={true}
+                        loop={true}
+                        showDots={false}
+                        padding={0}
+                    />
+                </div>
+            ) : (
+                <img className="w-full h-full object-cover" src={item.image} alt={item.title || `card-${idx}`} />
+            )}
+          </div>
+        ))}
       </div>
       
       {selectedItem && (
