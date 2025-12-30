@@ -2,9 +2,14 @@
 
 import alfajrImg from "../../assets/about/experience/alfajr_work.png"; 
 import africaImg from "../../assets/about/experience/africa_project.png"; 
+//bangkit
 import bangkitImg from "../../assets/about/experience/bangkit_cert.png"; 
 import bangkitImg2 from "../../assets/about/experience/Bangkit-meet.png";
-import amccImg from "../../assets/about/experience/amcc_activity.png"; 
+//amcc
+import amccImg from "../../assets/about/experience/amcc_activity1.jpg";
+import amccImg2 from "../../assets/about/experience/amcc_activity2.jpg"; 
+import amccImg3 from "../../assets/about/experience/amcc_activity3.jpg";
+import amccImg4 from "../../assets/about/experience/amcc_activity4.jpg";
 import competitionImg from "../../assets/about/experience/winning_moment.png";
 import campusImg from "../../assets/about/experience/campus_life.png";
 
@@ -87,7 +92,7 @@ export const experiences = [
   {
     id: 4,
     type: 'organization',
-    image: amccImg,
+    image: [amccImg,amccImg2,amccImg3,amccImg4],
     logo: amccLogo,
     title: 'Amikom Computer Club (AMCC)',
     role: 'Coordinator & Mentor',
