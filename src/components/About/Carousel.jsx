@@ -45,9 +45,11 @@ export default function Carousel({
   autoplayDelay = 3000,
   pauseOnHover = false,
   loop = false,
-  round = false
+  round = false,
+  showDots = true,
+  padding = 16
 }) {
-  const containerPadding = 16;
+  const containerPadding = padding;
   const itemWidth = baseWidth - containerPadding * 2;
   const trackItemOffset = itemWidth + GAP;
   const itemsForRender = useMemo(() => {
@@ -173,16 +175,17 @@ export default function Carousel({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden p-4 ${
-        round ? 'rounded-full border border-white' : 'rounded-[24px] border border-white/10'
+      className={`relative overflow-hidden mx-auto ${
+        round ? 'rounded-full border border-white' : 'rounded-xl'
       }`}
       style={{
-        width: '100%', // Full width of parent
-        height: '100%', // Full height of parent
+        width: `${baseWidth}px`,
+        height: '100%',
+        padding: `${containerPadding}px`
       }}
     >
       <motion.div
-        className="flex h-full" // Ensure track fills height
+        className="flex h-full"
         drag={isAnimating ? false : 'x'}
         {...dragProps}
         style={{
@@ -211,13 +214,13 @@ export default function Carousel({
           />
         ))}
       </motion.div>
-      {items.length > 1 && (
-        <div className={`flex w-full justify-center absolute z-20 bottom-4 left-1/2 -translate-x-1/2`}>
-            <div className="flex justify-between gap-2 px-4 py-2 bg-black/50 rounded-full backdrop-blur-sm">
+      {showDots && items.length > 1 && (
+        <div className={`flex w-full justify-center absolute z-20 bottom-2 left-1/2 -translate-x-1/2`}>
+            <div className="flex justify-between gap-1.5 px-3 py-1.5 bg-black/50 rounded-full backdrop-blur-sm scale-75">
             {items.map((_, index) => (
                 <motion.div
                 key={index}
-                className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${
+                className={`h-1.5 w-1.5 rounded-full cursor-pointer transition-colors duration-150 ${
                     activeIndex === index
                     ? 'bg-white'
                     : 'bg-white/30'

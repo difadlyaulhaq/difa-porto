@@ -96,13 +96,14 @@ function ExperienceModal({ experience, onClose }) {
         {/* Content */}
         <div className="p-8 overflow-y-auto max-h-[calc(90vh-16rem)] space-y-6">
           {/* Activity Image Banner */}
-          <div className="w-full h-48 md:h-64 rounded-xl overflow-hidden mb-6 shadow-lg border border-white/10 relative">
+          <div className="w-full h-48 md:h-64 rounded-xl overflow-hidden mb-6 shadow-lg border border-white/10 relative bg-zinc-950">
             {Array.isArray(experience.image) ? (
                 <Carousel 
                     items={experience.image} 
-                    baseWidth={250} 
+                    baseWidth={600} 
                     autoplay={true}
                     loop={true}
+                    padding={0}
                 />
             ) : (
                 <img 
@@ -315,7 +316,7 @@ export default function BounceCards({
         {items.map((item, idx) => (
           <div
             key={idx}
-            className={`card card-${idx} absolute border-8 border-white rounded-[30px] overflow-hidden cursor-pointer hover:border-cyan-400/50 transition-colors duration-300`}
+            className={`card card-${idx} absolute border-8 border-white rounded-[30px] overflow-hidden cursor-pointer hover:border-cyan-400/50 transition-colors duration-300 bg-zinc-900`}
             style={{
               width: cardWidth,
               height: cardHeight,
@@ -326,7 +327,20 @@ export default function BounceCards({
             onMouseLeave={resetSiblings}
             onClick={() => setSelectedItem(item)}
           >
-            <img className="w-full h-full object-cover" src={Array.isArray(item.image) ? item.image[0] : item.image} alt={item.title || `card-${idx}`} />
+            {Array.isArray(item.image) ? (
+                <div className="w-full h-full pointer-events-none">
+                    <Carousel 
+                        items={item.image} 
+                        baseWidth={cardWidth} 
+                        autoplay={true}
+                        loop={true}
+                        showDots={false}
+                        padding={0}
+                    />
+                </div>
+            ) : (
+                <img className="w-full h-full object-cover" src={item.image} alt={item.title || `card-${idx}`} />
+            )}
           </div>
         ))}
       </div>
