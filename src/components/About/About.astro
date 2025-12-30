@@ -1,11 +1,42 @@
 ---
 import imageMePng from "$assets/about/me/me2.png";
-
 import ProseWrapper from "$layouts/ProseWrapper.astro";
-import Resume from "./Resume/Resume.astro";
 import ProfileCard from "./ProfileCard.svelte";
 
+import BounceCards from "./BounceCards.jsx";
+import { getImage } from "astro:assets";
+import { experiences } from "./experienceData.js";
+
 import { Content } from "$content/main/about.md";
+
+const optimizedMe = await getImage({
+  src: imageMePng,
+  width: 800,
+  format: 'webp'
+});
+
+const optimizedExperiences = await Promise.all(
+  experiences.map(async (exp) => {
+    const optimizedLogo = await getImage({
+      src: exp.image,
+      width: 400,
+      format: 'webp'
+    });
+    return {
+      ...exp,
+      image: optimizedLogo.src 
+    };
+  })
+);
+
+const experienceTransforms = optimizedExperiences.map((_, i) => {
+  const total = optimizedExperiences.length;
+  const middle = (total - 1) / 2;
+  const offset = i - middle;
+  const angle = offset * 5;
+  const x = offset * 70;
+  return `translate(${x}px) rotate(${angle}deg)`;
+});
 ---
 
 <head>
@@ -13,42 +44,125 @@ import { Content } from "$content/main/about.md";
 </head>
 
 <div class="relative isolate overflow-hidden bg-background font-sans dark">
-  <div class="mx-auto max-w-5xl px-6 lg:px-8">
-    <div id="about" class="py-16 md:py-32 section">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- About Section -->
+    <div id="about" class="py-16 md:py-24 section">
       <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+        
+        <!-- Profile Card -->
         <div class="lg:pl-20 w-full flex lg:justify-center">
           <div class="max-w-sm px-2.5 lg:max-w-none">
-            <div class="rotate-2 -m-10 lg:-m-16 hover:rotate-0 transition-transform duration-500 ease-out">
-              <div id="me3d" class="w-full h-full">
-                <ProfileCard
-                  client:only="svelte"
-                  name="Difa Dlyaul Haq"
-                  title="Software Engineer"
-                  handle="difadlyh"
-                  status="Online"
-                  contactText="Contact Me"
-                  avatarUrl={imageMePng.src}
-                  showUserInfo={true}
-                  enableTilt={true}
-                  enableMobileTilt={false}
-                />
-              </div>
-              <div class="sr-only">this is me</div>
+            <div class="rotate-2 -m-10 lg:-m-16 hover:rotate-0 transition-all duration-700 ease-out hover:scale-105">
+              <ProfileCard
+                client:only="svelte"
+                name="Difa Dlyaul Haq"
+                title="Software Engineer"
+                handle="difadlyh"
+                status="Available for work"
+                contactText="Let's Talk"
+                avatarUrl={optimizedMe.src}
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+              />
             </div>
           </div>
         </div>
+
+        <!-- About Content -->
         <div class="lg:order-first lg:row-span-2">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm mb-6">
+            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span class="text-sm text-gray-300 font-medium">About Me</span>
+          </div>
+
           <ProseWrapper
-            class="prose-h1:text-4xl prose-h1:sm:text-5xl prose-h1:tracking-tight prose-a:font-bold"
+            class="prose-h1:text-4xl prose-h1:md:text-5xl prose-h1:lg:text-6xl prose-h1:tracking-tight prose-h1:bg-gradient-to-r prose-h1:from-white prose-h1:via-cyan-200 prose-h1:to-blue-400 prose-h1:bg-clip-text prose-h1:text-transparent prose-p:text-gray-300 prose-p:text-lg prose-p:leading-relaxed prose-a:text-cyan-400 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-cyan-300"
           >
             <Content />
           </ProseWrapper>
-        </div>
 
-        <div class="lg:pl-20 flex flex-col gap-12">
-          <Resume />
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a 
+              href="#experience" 
+              class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
+            >
+              <span>View Experience</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <a 
+              href="#contact" 
+              class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-white font-semibold rounded-full transition-all duration-300"
+            >
+              <span>Get in Touch</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Experience Section with BounceCards -->
+    <div id="experience" class="py-16">
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
+          Professional Journey
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Explore my journey through work, education, organizations, and achievements.
+        </p>
+      </div>
+      <!-- <ExperienceBounceCards client:visible experiences={optimizedExperiences} /> -->
+        <!-- Snapshots Gallery -->
+            <BounceCards
+              client:idle
+              items={optimizedExperiences}
+              transformStyles={experienceTransforms}
+              containerWidth={800}
+              containerHeight={400}
+              animationDelay={1}
+              animationStagger={0.08}
+              easeType="elastic.out(1, 0.5)"
+              enableHover={true}
+            />
+    </div>
   </div>
+
+  <!-- Background Effects -->
+  <div class="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
 </div>
+
+<style>
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(34, 211, 238, 0.3);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 211, 238, 0.5);
+  }
+</style>
