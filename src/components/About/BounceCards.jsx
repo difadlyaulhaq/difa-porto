@@ -51,7 +51,7 @@ function ExperienceModal({ experience, onClose }) {
           <div className="flex items-start gap-6">
             <div className={`w-20 h-20 rounded-2xl ${config.bgColor} border ${config.borderColor} flex items-center justify-center p-4 shrink-0`}>
               <img 
-                src={experience.image}
+                src={experience.logo}
                 alt={experience.title}
                 className="w-full h-full object-contain"
               />
@@ -94,6 +94,15 @@ function ExperienceModal({ experience, onClose }) {
         
         {/* Content */}
         <div className="p-8 overflow-y-auto max-h-[calc(90vh-16rem)] space-y-6">
+          {/* Activity Image Banner */}
+          <div className="w-full h-48 md:h-64 rounded-xl overflow-hidden mb-6 shadow-lg border border-white/10">
+            <img 
+              src={experience.image} 
+              alt="Activity" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+
           <div className="modal-item">
             <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
               <div className="w-1 h-5 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full"></div>

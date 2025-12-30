@@ -7,11 +7,19 @@ import amccImg from "../../assets/about/experience/amcc_activity.png";
 import competitionImg from "../../assets/about/experience/winning_moment.png";
 import campusImg from "../../assets/about/experience/campus_life.png";
 
+// Import logos
+import freelanceLogo from "../../assets/about/logos/freelance.png";
+import amccLogo from "../../assets/about/logos/amcc.png";
+import bangkitLogo from "../../assets/about/logos/Bangkit.png";
+import amikomLogo from "../../assets/about/logos/amikom.png";
+import alfajrLogo from "../../assets/about/logos/Alfajr-umroh.png";
+
 export const experiences = [
   {
     id: 1,
     type: 'work',
     image: alfajrImg,
+    logo: alfajrLogo,
     title: 'Software Developer (Freelance)',
     role: 'Alfajr Umroh',
     period: 'Nov 2025 - Dec 2025',
@@ -33,6 +41,7 @@ export const experiences = [
     id: 2,
     type: 'work',
     image: africaImg,
+    logo: freelanceLogo, // Placeholder
     title: 'Mobile App Developer',
     role: 'Omar Bin Khattab School (RA)',
     period: 'Oct 2024 - June 2025',
@@ -54,6 +63,7 @@ export const experiences = [
     id: 3,
     type: 'education',
     image: bangkitImg,
+    logo: bangkitLogo,
     title: 'Bangkit Academy By Google, GoTo, Traveloka',
     role: 'Machine Learning Cohort (Distinction Graduate)',
     period: 'Sept 2024 - Dec 2024',
@@ -75,6 +85,7 @@ export const experiences = [
     id: 4,
     type: 'organization',
     image: amccImg,
+    logo: amccLogo,
     title: 'Amikom Computer Club (AMCC)',
     role: 'Coordinator & Mentor',
     period: 'Nov 2023 - Nov 2025',
@@ -96,6 +107,7 @@ export const experiences = [
     id: 5,
     type: 'award',
     image: competitionImg,
+    logo: amikomLogo, // Placeholder
     title: 'Competitive Achievements',
     role: 'National Winner & Finalist',
     period: '2024 - 2025',
@@ -116,6 +128,7 @@ export const experiences = [
     id: 6,
     type: 'education',
     image: campusImg,
+    logo: amikomLogo,
     title: 'Universitas Amikom Yogyakarta',
     role: 'Bachelor of Informatics',
     period: '2022 - Present',

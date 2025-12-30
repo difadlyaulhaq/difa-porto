@@ -18,14 +18,20 @@ const optimizedMe = await getImage({
 
 const optimizedExperiences = await Promise.all(
   experiences.map(async (exp) => {
-    const optimizedLogo = await getImage({
+    const optimizedImage = await getImage({
       src: exp.image,
-      width: 400,
+      width: 600,
+      format: 'webp'
+    });
+    const optimizedLogo = await getImage({
+      src: exp.logo,
+      width: 200,
       format: 'webp'
     });
     return {
       ...exp,
-      image: optimizedLogo.src 
+      image: optimizedImage.src,
+      logo: optimizedLogo.src
     };
   })
 );
@@ -120,6 +126,7 @@ const iconMap = {
 
     <!-- Experience Section with BounceCards -->
     <div id="experience" class="py-16">
+      
       <div class="text-center mb-16 space-y-4">
         <h2 class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
           Professional Journey
