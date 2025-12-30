@@ -176,6 +176,8 @@ function ExperienceModal({ experience, onClose }) {
  * @param {Array} [props.items]
  * @param {number} [props.containerWidth]
  * @param {number} [props.containerHeight]
+ * @param {number} [props.cardWidth]
+ * @param {number} [props.cardHeight]
  * @param {number} [props.animationDelay]
  * @param {number} [props.animationStagger]
  * @param {string} [props.easeType]
@@ -187,6 +189,8 @@ export default function BounceCards({
   items = [],
   containerWidth = 400,
   containerHeight = 400,
+  cardWidth = 200,
+  cardHeight = 200,
   animationDelay = 0.5,
   animationStagger = 0.06,
   easeType = 'elastic.out(1, 0.8)',
@@ -301,8 +305,10 @@ export default function BounceCards({
         {items.map((item, idx) => (
           <div
             key={idx}
-            className={`card card-${idx} absolute w-[200px] aspect-square border-8 border-white rounded-[30px] overflow-hidden cursor-pointer hover:border-cyan-400/50 transition-colors duration-300`}
+            className={`card card-${idx} absolute border-8 border-white rounded-[30px] overflow-hidden cursor-pointer hover:border-cyan-400/50 transition-colors duration-300`}
             style={{
+              width: cardWidth,
+              height: cardHeight,
               boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
               transform: transformStyles[idx] || 'none'
             }}

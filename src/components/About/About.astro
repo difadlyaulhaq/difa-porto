@@ -41,7 +41,7 @@ const experienceTransforms = optimizedExperiences.map((_, i) => {
   const middle = (total - 1) / 2;
   const offset = i - middle;
   const angle = offset * 5;
-  const x = offset * 70;
+  const x = offset * 120;
   return `translate(${x}px) rotate(${angle}deg)`;
 });
 
@@ -141,8 +141,10 @@ const iconMap = {
         client:idle
         items={optimizedExperiences}
         transformStyles={experienceTransforms}
-        containerWidth={800}
-        containerHeight={400}
+        containerWidth={1000}
+        containerHeight={500}
+        cardWidth={350}
+        cardHeight={250}
         animationDelay={1}
         animationStagger={0.08}
         easeType="elastic.out(1, 0.5)"
