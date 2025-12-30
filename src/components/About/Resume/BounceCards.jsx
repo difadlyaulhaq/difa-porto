@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 
 export default function BounceCards({
@@ -16,8 +16,22 @@ export default function BounceCards({
     'rotate(-10deg) translate(85px)',
     'rotate(2deg) translate(170px)'
   ],
-  enableHover = false
+  enableHover = false,
+  onCardClick
 }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const scaleFactor = isMobile ? 0.4 : 1;
+
   useEffect(() => {
     gsap.fromTo(
       '.card',
@@ -42,15 +56,22 @@ export default function BounceCards({
     }
   };
 
+  const getScaledTransform = (transformStr) => {
+    if (!isMobile) return transformStr;
+    return transformStr.replace(/translate\(([-0-9.]+)px\)/g, (_, val) => {
+        return `translate(${parseFloat(val) * scaleFactor}px)`;
+    });
+  };
+
   const getPushedTransform = (baseTransform, offsetX) => {
     const translateRegex = /translate\(([-0-9.]+)px\)/;
     const match = baseTransform.match(translateRegex);
     if (match) {
       const currentX = parseFloat(match[1]);
-      const newX = currentX + offsetX;
+      const newX = currentX + offsetX * scaleFactor;
       return baseTransform.replace(translateRegex, `translate(${newX}px)`);
     } else {
-      return baseTransform === 'none' ? `translate(${offsetX}px)` : `${baseTransform} translate(${offsetX}px)`;
+      return baseTransform === 'none' ? `translate(${offsetX * scaleFactor}px)` : `${baseTransform} translate(${offsetX * scaleFactor}px)`;
     }
   };
 
@@ -61,7 +82,7 @@ export default function BounceCards({
       const selector = `.card-${i}`;
       gsap.killTweensOf(selector);
 
-      const baseTransform = transformStyles[i] || 'none';
+      const baseTransform = getScaledTransform(transformStyles[i] || 'none');
 
       if (i === hoveredIdx) {
         const noRotation = getNoRotationTransform(baseTransform);
@@ -96,7 +117,7 @@ export default function BounceCards({
       const selector = `.card-${i}`;
       gsap.killTweensOf(selector);
 
-      const baseTransform = transformStyles[i] || 'none';
+      const baseTransform = getScaledTransform(transformStyles[i] || 'none');
       gsap.to(selector, {
         transform: baseTransform,
         duration: 0.4,
@@ -108,22 +129,28 @@ export default function BounceCards({
 
   return (
     <div
-      className={`relative flex items-center justify-center ${className}`}
+      className={`relative flex items-center justify-center mx-auto ${className}`}
       style={{
-        width: containerWidth,
-        height: containerHeight
+        width: isMobile ? 'calc(100% - 1rem)' : containerWidth * scaleFactor,
+        height: containerHeight * scaleFactor,
+        maxWidth: '100vw',
+        marginRight: isMobile ? '0.5rem' : 'auto',
+        marginLeft: isMobile ? '0.5rem' : 'auto'
       }}
     >
       {images.map((src, idx) => (
         <div
           key={idx}
-          className={`card card-${idx} absolute w-[200px] aspect-square border-8 border-white rounded-[30px] overflow-hidden`}
+          className={`card card-${idx} absolute border-4 md:border-8 border-white rounded-[20px] md:rounded-[30px] overflow-hidden cursor-pointer bg-zinc-900 shadow-lg transition-colors duration-300`}
           style={{
+            width: 200 * scaleFactor,
+            height: 200 * scaleFactor,
             boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-            transform: transformStyles[idx] || 'none'
+            transform: getScaledTransform(transformStyles[idx] || 'none')
           }}
           onMouseEnter={() => pushSiblings(idx)}
           onMouseLeave={resetSiblings}
+          onClick={() => onCardClick?.(idx)}
         >
           <img className="w-full h-full object-cover" src={src} alt={`card-${idx}`} />
         </div>
