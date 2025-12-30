@@ -16,8 +16,7 @@ export default function BounceCards({
     'rotate(-10deg) translate(85px)',
     'rotate(2deg) translate(170px)'
   ],
-  enableHover = false,
-  onCardClick
+  enableHover = false
 }) {
   useEffect(() => {
     gsap.fromTo(
@@ -118,18 +117,15 @@ export default function BounceCards({
       {images.map((src, idx) => (
         <div
           key={idx}
-          className={`card card-${idx} absolute w-[200px] aspect-square border-8 border-white/20 rounded-[30px] overflow-hidden cursor-pointer bg-zinc-900 transition-colors hover:border-cyan-400/50`}
+          className={`card card-${idx} absolute w-[200px] aspect-square border-8 border-white rounded-[30px] overflow-hidden`}
           style={{
             boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
             transform: transformStyles[idx] || 'none'
           }}
           onMouseEnter={() => pushSiblings(idx)}
           onMouseLeave={resetSiblings}
-          onClick={() => onCardClick?.(idx)}
         >
-          <div className="w-full h-full p-4 flex items-center justify-center">
-             <img className="w-full h-full object-contain" src={src} alt={`card-${idx}`} />
-          </div>
+          <img className="w-full h-full object-cover" src={src} alt={`card-${idx}`} />
         </div>
       ))}
     </div>

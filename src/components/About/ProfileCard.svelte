@@ -294,6 +294,7 @@
             src={avatarUrl}
             alt="{name || 'User'} avatar"
             loading="lazy"
+            decoding="async"
             on:error={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
           />
           {#if showUserInfo}
@@ -304,6 +305,7 @@
                     src={miniAvatarUrl || avatarUrl}
                     alt="{name || 'User'} mini avatar"
                     loading="lazy"
+                    decoding="async"
                     on:error={(e) => { 
                       const target = e.currentTarget as HTMLImageElement;
                       target.style.opacity = '0.5';

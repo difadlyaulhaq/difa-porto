@@ -2,13 +2,29 @@ import React, { useState } from 'react';
 import BounceCards from './BounceCards';
 import { motion, AnimatePresence } from 'framer-motion';
 
+/**
+ * @typedef {Object} ResumeItem
+ * @property {string} logoUrl
+ * @property {string} company
+ * @property {string} title
+ * @property {string|{label:string}} [start]
+ * @property {string|{label:string}} [end]
+ * @property {string} [description]
+ * @property {string[]} [tags]
+ */
+
+/**
+ * @param {Object} props
+ * @param {ResumeItem[]} [props.resume]
+ * @param {ResumeItem[]} [props.awards]
+ */
 const ResumeBounceCards = ({ resume, awards = [] }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   // Combine resume and awards for display if needed, or just use resume for now
   // For this example, we'll map resume items to the format expected by BounceCards
   // We'll use the logo URL as the image source
-  const items = [...resume, ...awards];
+  const items = [...(resume || []), ...(awards || [])];
   const images = items.map(item => item.logoUrl);
 
   const handleCardClick = (index) => {
