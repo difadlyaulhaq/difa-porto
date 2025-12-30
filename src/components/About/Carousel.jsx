@@ -42,12 +42,12 @@ export default function Carousel({
   items = [],
   baseWidth = 300,
   autoplay = false,
-  autoplayDelay = 3000,
+  autoplayDelay = 5000,
   pauseOnHover = false,
   loop = false,
   round = false,
   showDots = true,
-  padding = 16
+  padding = 0
 }) {
   const containerPadding = padding;
   const itemWidth = baseWidth - containerPadding * 2;

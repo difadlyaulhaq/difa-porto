@@ -10,8 +10,15 @@ import amccImg from "../../assets/about/experience/amcc_activity1.jpg";
 import amccImg2 from "../../assets/about/experience/amcc_activity2.jpg"; 
 import amccImg3 from "../../assets/about/experience/amcc_activity3.jpg";
 import amccImg4 from "../../assets/about/experience/amcc_activity4.jpg";
-import competitionImg from "../../assets/about/experience/winning_moment.png";
+//competition
+import competitionImg from "../../assets/about/experience/winning_moment.jpg";
+import competitionImg2 from "../../assets/about/experience/winning_moment4.webp";
+import competitionImg3 from "../../assets/about/experience/winning_moment3.webp";
+import competitionImg4 from '../../assets/about/experience/winning_moment2.png';
+import competitionImg5 from '../../assets/about/experience/winning_moment5.png';
+//amikom
 import campusImg from "../../assets/about/experience/campus_life.png";
+
 
 
 // Import logos
@@ -114,7 +121,7 @@ export const experiences = [
   {
     id: 5,
     type: 'award',
-    image: competitionImg,
+    image: [competitionImg, competitionImg2, competitionImg3,competitionImg4,competitionImg5],
     logo: amikomLogo, // Placeholder
     title: 'Competitive Achievements',
     role: 'National Winner & Finalist',
@@ -129,7 +136,7 @@ export const experiences = [
     ],
     skills: ['Innovation', 'Pitching', 'Rapid Prototyping', 'Teamwork'],
     achievements: [
-      'Consistently recognized at the national level for innovation in AI and Mobile Development.'
+      'Consistently recognized at the national level for innovation in AI Development and Software Engineering.'
     ]
   },
   {

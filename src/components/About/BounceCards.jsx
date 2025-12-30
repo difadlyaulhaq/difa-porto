@@ -226,7 +226,7 @@ export default function BounceCards({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const scaleFactor = isMobile ? 0.5 : 1;
+  const scaleFactor = isMobile ? 0.4 : 1;
 
   useEffect(() => {
     gsap.fromTo(
@@ -268,7 +268,7 @@ export default function BounceCards({
       const newX = currentX + offsetX * scaleFactor;
       return baseTransform.replace(translateRegex, `translate(${newX}px)`);
     } else {
-      return baseTransform === 'none' ? `translate(${offsetX} * scaleFactor}px)` : `${baseTransform} translate(${offsetX * scaleFactor}px)`;
+      return baseTransform === 'none' ? `translate(${offsetX * scaleFactor}px)` : `${baseTransform} translate(${offsetX * scaleFactor}px)`;
     }
   };
 
@@ -329,9 +329,11 @@ export default function BounceCards({
       <div
         className={`relative flex items-center justify-center mx-auto ${className}`}
         style={{
-          width: isMobile ? '100%' : containerWidth * scaleFactor,
+          width: isMobile ? 'calc(100% - 1rem)' : containerWidth * scaleFactor,
           height: containerHeight * scaleFactor,
-          maxWidth: '100vw'
+          maxWidth: '100vw',
+          marginRight: isMobile ? '0.5rem' : 'auto',
+          marginLeft: isMobile ? '0.5rem' : 'auto'
         }}
       >
         {items.map((item, idx) => (
