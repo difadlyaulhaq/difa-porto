@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
 import { X, Calendar, MapPin, Briefcase, GraduationCap, Users, Trophy, Award } from 'lucide-react';
 import { typeConfig } from './experienceData.js';
@@ -33,7 +34,9 @@ function ExperienceModal({ experience, onClose }) {
 
   if (!experience) return null;
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <div
       ref={modalRef}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
@@ -153,7 +156,8 @@ function ExperienceModal({ experience, onClose }) {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
