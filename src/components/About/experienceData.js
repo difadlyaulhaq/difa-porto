@@ -2,7 +2,8 @@
 
 import alfajrImg from "../../assets/about/experience/alfajr_work.png"; 
 import africaImg from "../../assets/about/experience/africa_project.png"; 
-import bangkitImg from "../../assets/about/experience/Bangkit-meet.png"; 
+import bangkitImg from "../../assets/about/experience/bangkit_cert.png"; 
+import bangkitImg2 from "../../assets/about/experience/Bangkit-meet.png";
 import amccImg from "../../assets/about/experience/amcc_activity.png"; 
 import competitionImg from "../../assets/about/experience/winning_moment.png";
 import campusImg from "../../assets/about/experience/campus_life.png";
@@ -14,12 +15,13 @@ import amccLogo from "../../assets/about/logos/amcc.png";
 import bangkitLogo from "../../assets/about/logos/Bangkit.png";
 import amikomLogo from "../../assets/about/logos/amikom.png";
 import alfajrLogo from "../../assets/about/logos/Alfajr-umroh.png";
+import africaLogo from "../../assets/about/logos/africa.png";
 
 export const experiences = [
   {
     id: 1,
     type: 'work',
-    image: [alfajrImg, africaImg],
+    image: alfajrImg,
     logo: alfajrLogo,
     title: 'Software Developer (Freelance)',
     role: 'Alfajr Umroh',
@@ -42,7 +44,7 @@ export const experiences = [
     id: 2,
     type: 'work',
     image: africaImg,
-    logo: freelanceLogo, // Placeholder
+    logo: africaLogo, // Placeholder
     title: 'Mobile App Developer',
     role: 'Omar Bin Khattab School (RA)',
     period: 'Oct 2024 - June 2025',
@@ -63,7 +65,7 @@ export const experiences = [
   {
     id: 3,
     type: 'education',
-    image: bangkitImg,
+    image: [bangkitImg, bangkitImg2],
     logo: bangkitLogo,
     title: 'Bangkit Academy By Google, GoTo, Traveloka',
     role: 'Machine Learning Cohort (Distinction Graduate)',
