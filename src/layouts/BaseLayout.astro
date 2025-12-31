@@ -4,7 +4,7 @@ const { title, description, image } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full antialiased dark">
+<html lang="en" class="antialiased dark">
   <head>
     <BaseHead title={title} description={description} image={image} />
 
@@ -42,7 +42,7 @@ const { title, description, image } = Astro.props;
   </head>
 
   <body
-    class="w-full h-full bg-white dark:bg-base-950 transition-colors duration-150  font-sans"
+    class="w-full min-h-screen bg-white dark:bg-base-950 transition-colors duration-150  font-sans"
   >
     <!-- ✅ font-sans ditambahkan di sini -->
     <slot />

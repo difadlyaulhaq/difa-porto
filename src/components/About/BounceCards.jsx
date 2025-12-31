@@ -44,13 +44,13 @@ function ExperienceModal({ experience, onClose }) {
       onClick={onClose}
     >
       <div
-        className="modal-content bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-white/10"
+        className="modal-content bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl md:rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-white/10"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="relative p-8 border-b border-white/10">
-          <div className="flex items-start gap-6">
-            <div className={`w-20 h-20 rounded-2xl ${config.bgColor} border ${config.borderColor} flex items-center justify-center p-4 shrink-0`}>
+        <div className="relative p-5 md:p-8 border-b border-white/10 shrink-0">
+          <div className="flex items-start gap-4 md:gap-6">
+            <div className={`w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl ${config.bgColor} border ${config.borderColor} flex items-center justify-center p-3 md:p-4 shrink-0`}>
               <img 
                 src={experience.logo}
                 alt={experience.title}
@@ -58,45 +58,45 @@ function ExperienceModal({ experience, onClose }) {
               />
             </div>
             
-            <div className="flex-1">
-              <div className={`inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r ${config.color} rounded-full mb-3`}>
-                <Icon className="w-4 h-4 text-white" />
-                <span className="text-white text-sm font-semibold">{config.label}</span>
+            <div className="flex-1 min-w-0">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r ${config.color} rounded-full mb-2 md:mb-3`}>
+                <Icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
+                <span className="text-white text-xs md:text-sm font-semibold">{config.label}</span>
               </div>
               
-              <h2 className="text-3xl font-bold text-white mb-2">
+              <h2 className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2 truncate">
                 {experience.title}
               </h2>
               
-              <p className="text-xl text-cyan-400 mb-3">
+              <p className="text-lg md:text-xl text-cyan-400 mb-2 md:mb-3 truncate">
                 {experience.role}
               </p>
               
-              <div className="flex flex-wrap gap-4 text-gray-400">
+              <div className="flex flex-wrap gap-3 md:gap-4 text-gray-400">
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span className="text-sm">{experience.period}</span>
+                  <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                  <span className="text-xs md:text-sm">{experience.period}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span className="text-sm">{experience.location}</span>
+                  <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                  <span className="text-xs md:text-sm">{experience.location}</span>
                 </div>
               </div>
             </div>
             
             <button
               onClick={onClose}
-              className="p-2 hover:bg-white/10 rounded-full transition-colors"
+              className="p-2 hover:bg-white/10 rounded-full transition-colors shrink-0"
             >
-              <X className="w-6 h-6 text-gray-400 hover:text-white" />
+              <X className="w-5 h-5 md:w-6 md:h-6 text-gray-400 hover:text-white" />
             </button>
           </div>
         </div>
         
         {/* Content */}
-        <div className="p-8 overflow-y-auto max-h-[calc(90vh-16rem)] space-y-6">
+        <div className="p-5 md:p-8 overflow-y-auto flex-1 space-y-6">
           {/* Activity Image Banner */}
-          <div className="w-full h-48 md:h-64 rounded-xl overflow-hidden mb-6 shadow-lg border border-white/10 relative bg-zinc-950">
+          <div className="w-full h-40 md:h-64 rounded-xl overflow-hidden mb-6 shadow-lg border border-white/10 relative bg-zinc-950 shrink-0">
             {Array.isArray(experience.image) ? (
                 <Carousel 
                     items={experience.image} 
