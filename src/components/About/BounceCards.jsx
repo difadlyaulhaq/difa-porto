@@ -64,11 +64,11 @@ function ExperienceModal({ experience, onClose }) {
                 <span className="text-white text-xs md:text-sm font-semibold">{config.label}</span>
               </div>
               
-              <h2 className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2 truncate">
+              <h2 className="text-lg md:text-3xl font-bold text-white mb-1 md:mb-2 leading-tight">
                 {experience.title}
               </h2>
               
-              <p className="text-lg md:text-xl text-cyan-400 mb-2 md:mb-3 truncate">
+              <p className="text-base md:text-xl text-cyan-400 mb-2 md:mb-3 leading-snug">
                 {experience.role}
               </p>
               
@@ -96,7 +96,7 @@ function ExperienceModal({ experience, onClose }) {
         {/* Content */}
         <div className="p-5 md:p-8 overflow-y-auto flex-1 space-y-6">
           {/* Activity Image Banner */}
-          <div className="w-full h-40 md:h-64 rounded-xl overflow-hidden mb-6 shadow-lg border border-white/10 relative bg-zinc-950 shrink-0">
+          <div className="w-full h-auto min-h-[200px] max-h-[300px] md:h-64 rounded-xl overflow-hidden mb-6 shadow-lg border border-white/10 relative bg-zinc-950 shrink-0 flex items-center justify-center">
             {Array.isArray(experience.image) ? (
                 <Carousel 
                     items={experience.image} 
@@ -109,7 +109,7 @@ function ExperienceModal({ experience, onClose }) {
                 <img 
                 src={experience.image} 
                 alt="Activity" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain p-2"
                 />
             )}
           </div>

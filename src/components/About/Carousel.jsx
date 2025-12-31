@@ -27,11 +27,11 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
       }}
       transition={transition}
     >
-        <div className="w-full h-full relative">
+        <div className="w-full h-full relative p-1">
             <img 
                 src={item} 
                 alt={`Slide ${index}`} 
-                className="w-full h-full object-cover pointer-events-none"
+                className="w-full h-full object-contain pointer-events-none"
             />
         </div>
     </motion.div>
@@ -49,8 +49,24 @@ export default function Carousel({
   showDots = true,
   padding = 0
 }) {
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(baseWidth);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setContainerWidth(entry.contentRect.width);
+      }
+    });
+
+    resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
+
   const containerPadding = padding;
-  const itemWidth = baseWidth - containerPadding * 2;
+  const itemWidth = containerWidth - containerPadding * 2;
   const trackItemOffset = itemWidth + GAP;
   const itemsForRender = useMemo(() => {
     if (!loop) return items;
@@ -64,7 +80,6 @@ export default function Carousel({
   const [isJumping, setIsJumping] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const containerRef = useRef(null);
   useEffect(() => {
     if (pauseOnHover && containerRef.current) {
       const container = containerRef.current;
@@ -94,13 +109,19 @@ export default function Carousel({
     const startingPosition = loop ? 1 : 0;
     setPosition(startingPosition);
     x.set(-startingPosition * trackItemOffset);
-  }, [items.length, loop, trackItemOffset, x]);
+  }, [items.length, loop, trackItemOffset, x]); // Added trackItemOffset dependency to update on resize
 
   useEffect(() => {
     if (!loop && position > itemsForRender.length - 1) {
       setPosition(Math.max(0, itemsForRender.length - 1));
     }
   }, [itemsForRender.length, loop, position]);
+
+  // Force x update when width changes to keep current item centered/visible
+  useEffect(() => {
+     x.set(-position * trackItemOffset);
+  }, [containerWidth, trackItemOffset, position, x]);
+
 
   const effectiveTransition = isJumping ? { duration: 0 } : SPRING_OPTIONS;
 
@@ -179,7 +200,7 @@ export default function Carousel({
         round ? 'rounded-full border border-white' : 'rounded-xl'
       }`}
       style={{
-        width: `${baseWidth}px`,
+        width: '100%',
         height: '100%',
         padding: `${containerPadding}px`
       }}
