@@ -15,57 +15,66 @@ const projectImages = await Promise.all(
 );
 ---
 
-<div class="text-white font-sans">
+<div class="text-white font-sans min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
   <div class="pt-6 sm:pt-24 font-sans">
     <ProjectBreadcrumb name={project.name} />
 
-    <!-- Image gallery -->
+    <!-- Image gallery with enhanced styling -->
     {
       project.images ? (
         <div class="mx-auto mt-6 max-w-2xl sm:px-6 md:grid md:max-w-5xl md:grid-cols-3 md:gap-x-8 md:px-8">
-          <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-3xl md:block border border-white/10 shadow-lg shadow-white/5 hover:shadow-white/10 transition-shadow duration-300">
-            <div class="h-full w-full">
+          {/* Main large image */}
+          <div class="group aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-3xl md:block border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 hover:border-white/20 transition-all duration-500 relative">
+            <div class="h-full w-full relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src={projectImages[0]()}
                 alt=""
                 height={2400}
                 width={2000}
-                class="h-full w-full object-contain"
+                class="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
+
+          {/* Side images */}
           <div class="hidden md:grid md:grid-cols-1 md:gap-y-8">
-            <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-3xl border border-white/10 shadow-lg shadow-white/5 hover:shadow-white/10 transition-shadow duration-300">
-              <div class="h-full w-full">
+            <div class="group aspect-h-2 aspect-w-3 overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 hover:border-white/20 transition-all duration-500 relative">
+              <div class="h-full w-full relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Image
                   src={projectImages[1]()}
                   alt=""
                   height={1200}
                   width={1800}
-                  class="h-full w-full object-contain"
+                  class="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </div>
-            <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-3xl border border-white/10 shadow-lg shadow-white/5 hover:shadow-white/10 transition-shadow duration-300">
-              <div class="h-full w-full">
+            <div class="group aspect-h-2 aspect-w-3 overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 hover:border-white/20 transition-all duration-500 relative">
+              <div class="h-full w-full relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Image
                   src={projectImages[2]()}
                   alt=""
                   height={1200}
                   width={1800}
-                  class="h-full w-full object-contain"
+                  class="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </div>
           </div>
-          <div class="aspect-h-5 aspect-w-4 md:aspect-h-4 md:aspect-w-3 sm:overflow-hidden sm:rounded-3xl border-y sm:border border-white/10 shadow-lg shadow-white/5 hover:shadow-white/10 transition-shadow duration-300">
-            <div class="h-full w-full">
+
+          {/* Right large image */}
+          <div class="group aspect-h-5 aspect-w-4 md:aspect-h-4 md:aspect-w-3 sm:overflow-hidden sm:rounded-3xl border-y sm:border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 hover:border-white/20 transition-all duration-500 relative">
+            <div class="h-full w-full relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src={projectImages[3]()}
                 alt=""
                 height={2400}
                 width={2000}
-                class="h-full w-full object-contain"
+                class="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
@@ -75,27 +84,28 @@ const projectImages = await Promise.all(
       )
     }
 
-    <!-- Product info -->
+    <!-- Product info with enhanced cards -->
     <div
       class="mx-auto max-w-2xl px-4 pb-0 pt-10 sm:px-6 md:grid md:max-w-5xl md:grid-cols-3 md:grid-rows-[auto,auto,1fr] md:gap-x-8 md:px-8 md:pb-24 md:pt-16"
     >
       <div
-        class="md:col-span-2 md:border-r md:border-neutral-200/10 dark:border-neutral-800 md:pr-8"
+        class="md:col-span-2 md:border-r md:border-white/10 md:pr-8"
       >
         <h1
-          class="text-2xl font-bold tracking-tight text-neutral-100 dark:text-white sm:text-3xl bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent font-sans leading-tight"
+          class="text-2xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent font-sans leading-tight pb-2 animate-gradient"
         >
           {project.name}
         </h1>
       </div>
 
-      <!-- Options -->
+      <!-- Options sidebar with glass morphism -->
       <div class="mt-4 md:row-span-3 md:mt-0">
-        <div class="mt-0">
+        <div class="sticky top-24 space-y-6">
           {
             project.tags && (
-              <div class="mt-0 sm:mt-4">
-                <div class="flex flex-wrap gap-3">
+              <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-xl shadow-purple-500/5">
+                <h3 class="text-sm font-semibold text-white/60 uppercase tracking-wider mb-4">Technologies</h3>
+                <div class="flex flex-wrap gap-2">
                   {project.tags.map((tag: string) => (
                     <Badge size="lg">{tag}</Badge>
                   ))}
@@ -104,59 +114,79 @@ const projectImages = await Promise.all(
             )
           }
 
-          <div class="mt-8 flex flex-col gap-4">
-            <ProjectButtons
-              codeUrl={project.codeUrl}
-              projectUrl={project.projectUrl}
-            />
+          <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-xl shadow-purple-500/5">
+            <h3 class="text-sm font-semibold text-white/60 uppercase tracking-wider mb-4">Quick Actions</h3>
+            <div class="flex flex-col gap-3">
+              <ProjectButtons
+                codeUrl={project.codeUrl}
+                projectUrl={project.projectUrl}
+              />
+            </div>
+          </div>
+
+          {/* Additional info card */}
+          <div class="p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-purple-500/5 to-blue-500/5 backdrop-blur-xl shadow-xl shadow-purple-500/5">
+            <div class="flex items-center gap-3 text-sm text-white/70">
+              <svg class="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span>Built with passion</span>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- Content area with enhanced prose -->
       <div
-        class="py-10 md:col-span-2 md:col-start-1 md:border-r md:border-neutral-200/10 dark:border-neutral-800 md:pb-16 md:pr-8 md:pt-6"
+        class="py-10 md:col-span-2 md:col-start-1 md:border-r md:border-white/10 md:pb-16 md:pr-8 md:pt-6"
       >
-        <ProseWrapper>
-          <div class="text-base leading-relaxed tracking-wide text-neutral-200">
-            <slot />
-          </div>
-        </ProseWrapper>
+        <div class="prose-enhanced rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm p-6 sm:p-8 shadow-xl shadow-purple-500/5">
+          <ProseWrapper>
+            <div class="text-base leading-relaxed tracking-wide text-neutral-200">
+              <slot />
+            </div>
+          </ProseWrapper>
+        </div>
       </div>
     </div>
 
+    {/* Mobile images with enhanced styling */}
     {
       project.images ? (
-        <div class="mx-auto mt-6 max-w-2xl sm:px-6 md:hidden pb-24">
-          <div class="aspect-h-2 aspect-w-3 overflow-hidden sm:rounded-3xl mt-4 border-y sm:border border-white/10 shadow-lg shadow-white/5">
-            <div class="h-full w-full">
+        <div class="mx-auto mt-6 max-w-2xl sm:px-6 md:hidden pb-24 space-y-4">
+          <div class="group aspect-h-2 aspect-w-3 overflow-hidden sm:rounded-3xl border-y sm:border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 transition-all duration-500 relative">
+            <div class="h-full w-full relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src={projectImages[1]()}
                 height={1200}
                 width={1800}
                 alt=""
-                class="h-full w-full object-contain"
+                class="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
-          <div class="aspect-h-4 aspect-w-3 overflow-hidden sm:rounded-3xl mt-4 border-y sm:border border-white/10 shadow-lg shadow-white/5">
-            <div class="h-full w-full">
+          <div class="group aspect-h-4 aspect-w-3 overflow-hidden sm:rounded-3xl border-y sm:border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 transition-all duration-500 relative">
+            <div class="h-full w-full relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src={projectImages[0]()}
                 height={2400}
                 width={2000}
                 alt=""
-                class="h-full w-full object-contain"
+                class="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
-          <div class="aspect-h-2 aspect-w-3 overflow-hidden sm:rounded-3xl mt-4 border-y sm:border border-white/10 shadow-lg shadow-white/5">
-            <div class="h-full w-full">
+          <div class="group aspect-h-2 aspect-w-3 overflow-hidden sm:rounded-3xl border-y sm:border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 transition-all duration-500 relative">
+            <div class="h-full w-full relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src={projectImages[2]()}
                 height={1200}
                 width={1800}
                 alt=""
-                class="h-full w-full object-contain"
+                class="h-full w-full object-contain transform group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
@@ -165,3 +195,29 @@ const projectImages = await Promise.all(
     }
   </div>
 </div>
+
+<style>
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  .prose-enhanced {
+    transition: all 0.3s ease;
+  }
+
+  .prose-enhanced:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 20px 25px -5px rgba(132, 0, 255, 0.1);
+  }
+</style>
