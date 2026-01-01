@@ -6,7 +6,7 @@ interface Props {
 const { name } = Astro.props;
 ---
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="py-4">
   <ol
     role="list"
     class="mx-auto flex max-w-2xl w-full items-center space-x-2 px-4 sm:px-6 md:max-w-5xl md:px-8"
@@ -15,16 +15,23 @@ const { name } = Astro.props;
       <div class="flex items-center">
         <a
           href="/#projects"
-          class="mr-2 text-sm font-medium text-neutral-900 hover:text-neutral-800 dark:text-neutral-100"
-          >projects</a
+          class="group flex items-center gap-2 mr-2 text-sm font-medium text-neutral-400 hover:text-white transition-all duration-300"
         >
+          <svg class="w-4 h-4 text-purple-400 group-hover:text-purple-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span class="relative">
+            projects
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+          </span>
+        </a>
         <svg
           width="16"
           height="20"
           viewBox="0 0 16 20"
           fill="currentColor"
           aria-hidden="true"
-          class="h-5 w-4 text-neutral-300"
+          class="h-5 w-4 text-neutral-600"
         >
           <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z"></path>
         </svg>
@@ -32,9 +39,23 @@ const { name } = Astro.props;
     </li>
 
     <li class="text-sm">
-      <div class="font-medium text-neutral-500 dark:text-neutral-400">
-        {name}
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+        <div class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></div>
+        <span class="font-medium text-neutral-300">
+          {name}
+        </span>
       </div>
     </li>
   </ol>
 </nav>
+
+<style>
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+</style>

@@ -3,27 +3,31 @@ name: 'Meeting-in'
 date: '2025-09'
 featured: true
 
-thumbnail: '/src/assets/projects/tiny-planets/image1.png'
-aspect: 'aspect-[1]'
+thumbnail: '/src/assets/projects/meeting-in/image1.png'
+aspect: 'aspect-video'
 codeUrl: 'https://github.com/difadlyaulhaq/meeting.in'
 projectUrl: 'https://meeting-in.vercel.app/'
 
-projectPageVersion: 'tiered'
+projectPageVersion: 'standard'
 tags:
   - 'Next.js'
   - 'clerk'
   - 'getstream'
 
 mainTags:
-  - 'three.js component'
-  - 'procgen'
+  - 'Next.js'
+  - 'Stream'
+  - 'Video Conference'
 
 images:
-  - '/src/assets/projects/tiny-planets/image1.png'
-  - '/src/assets/projects/tiny-planets/image2.png'
+  - '/src/assets/projects/meeting-in/image1.png'
+  - '/src/assets/projects/meeting-in/image2.png'
+  - '/src/assets/projects/meeting-in/image3.png'
+  - '/src/assets/projects/meeting-in/image4.png'
+  - '/src/assets/projects/meeting-in/image5.png'
 ---
-import ProjectTiered from "$components/ProjectPages/ProjectTiered.astro";
+import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
 
-<ProjectTiered project={frontmatter}>
+<ProjectStandard project={frontmatter}>
 A feature-rich video conference application built with Next.js 15, TypeScript, and Stream real-time technology. This project demonstrates modern web development practices and real-time communication implementation.
-</ProjectTiered>
+</ProjectStandard>
