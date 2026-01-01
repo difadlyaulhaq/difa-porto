@@ -15,69 +15,133 @@ const projectImages = await Promise.all(
 );
 ---
 
-<div class="">
-	<div class="pb-16 pt-6 sm:pt-24 sm:pb-24">
-		<ProjectBreadcrumb name={project.name} />
+<div class="min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950 text-white relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f12_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f12_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
+    <div class="absolute top-1/4 -left-48 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-pulse"></div>
+    <div class="absolute bottom-1/4 -right-48 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+  </div>
 
-		<div class="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8">
-			<div class="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
-				<div class="lg:col-span-5 lg:col-start-8">
-					<div class="flex justify-between">
-						<h1 class="text-3xl font-bold text-neutral-900 dark:text-white">{project.name}</h1>
-					</div>
-				</div>
+  <div class="relative pb-16 pt-6 sm:pt-24 sm:pb-24">
+    <ProjectBreadcrumb name={project.name} />
 
-				<div class="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
-					<!-- Image gallery -->
-					{project.images ? 
-							(<h2 class="sr-only">Images</h2>
+    <div class="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8">
+      <div class="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
+        {/* Title section with gradient */}
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full backdrop-blur-sm w-fit">
+              <div class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></div>
+              <span class="text-xs text-purple-300 font-medium uppercase tracking-wider">Featured Project</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent animate-gradient leading-tight pb-2">
+              {project.name}
+            </h1>
+          </div>
+        </div>
 
-							<div
-								class="grid grid-cols-1 overflow-hidden rounded-3xl lg:grid-cols-2 lg:grid-rows-3 lg:gap-8"
-							>
-									<Image
-										src={projectImages[0]()}
-										alt=""
-										width={1000}
-										height={1000}
-										class="rounded-3xl lg:col-span-2 lg:row-span-2 border border-white/10"
-									/>
-								{project.images.length > 1 ?
-									<Image src={projectImages[1]()} alt="" class="hidden rounded-3xl lg:block border border-white/10"
-										width={1000}
-										height={1000} />
-								: null}
-								{project.images.length > 2 ?
-									<Image src={projectImages[2]()} alt="" class="hidden rounded-3xl lg:block border border-white/10"
-										width={1000}
-										height={1000} />
-								: null}
-							</div>)
-					: <slot name="demo" />}
-				</div>
-				<div class="mt-8 lg:col-span-5">
-					<div class="flex flex-col gap-4">
-						<ProjectButtons codeUrl={project.codeUrl} projectUrl={project.projectUrl} />
-					</div>
+        {/* Image gallery with enhanced cards */}
+        <div class="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
+          {project.images ? (
+            <>
+              <h2 class="sr-only">Images</h2>
+              <div class={`grid grid-cols-1 ${project.aspect?.includes('9/19') || project.aspect?.includes('9/16') ? 'sm:grid-cols-2' : 'gap-4'} gap-4 space-y-4 lg:space-y-0`}>
+                {projectImages.map((img, i) => (
+                  <div class={`group relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl shadow-purple-500/10 hover:shadow-purple-500/20 hover:border-white/20 transition-all duration-500 overflow-hidden ${project.aspect || 'aspect-video'}`}>
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                    <Image
+                      src={img()}
+                      alt=""
+                      class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700 relative z-10"
+                    />
+                    <div class="absolute inset-0 bg-white/5 backdrop-blur-2xl" />
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <slot name="demo" />
+          )}
+        </div>
 
-					<!-- Product details -->
-					<div class="mt-10">
-						<ProseWrapper>
-							<slot />
-						  </ProseWrapper>
-					</div>
+        {/* Content section with glass cards */}
+        <div class="mt-8 lg:col-span-5 space-y-6">
+          {/* Action buttons card */}
+          <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-xl shadow-purple-500/5 hover:border-white/15 transition-all duration-300">
+            <h3 class="text-sm font-semibold text-white/60 uppercase tracking-wider mb-4">Quick Actions</h3>
+            <div class="flex flex-col gap-3">
+              <ProjectButtons codeUrl={project.codeUrl} projectUrl={project.projectUrl} />
+            </div>
+          </div>
 
-					{project.tags ?
-						<div class="mt-14">
-							<div class="flex flex-wrap gap-3">
-								{project.tags.map((tag: string) => (
-									<Badge size="lg">{tag}</Badge>
-								))}
-							</div>
-						</div>
-					: null}
-				</div>
-			</div>
-		</div>
-	</div>
+          {/* Project details card */}
+          <div class="p-6 sm:p-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm shadow-xl shadow-purple-500/5 hover:border-white/10 transition-all duration-300">
+            <h3 class="text-sm font-semibold text-white/60 uppercase tracking-wider mb-4">About Project</h3>
+            <ProseWrapper>
+              <div class="text-base leading-relaxed text-neutral-200">
+                <slot />
+              </div>
+            </ProseWrapper>
+          </div>
+
+          {/* Tags card */}
+          {project.tags ? (
+            <div class="p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-purple-500/5 to-blue-500/5 backdrop-blur-xl shadow-xl shadow-purple-500/5 hover:border-white/15 transition-all duration-300">
+              <h3 class="text-sm font-semibold text-white/60 uppercase tracking-wider mb-4">Technologies Used</h3>
+              <div class="flex flex-wrap gap-2">
+                {project.tags.map((tag: string) => (
+                  <Badge size="lg">{tag}</Badge>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {/* Decorative info card */}
+          <div class="p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-pink-500/5 to-purple-500/5 backdrop-blur-xl shadow-xl shadow-purple-500/5">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white mb-1">Built with passion</h4>
+                <p class="text-sm text-white/60">Every detail crafted with care and attention</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  /* Smooth hover transitions for all interactive elements */
+  .group:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Enhanced focus states for accessibility */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid rgba(132, 0, 255, 0.5);
+    outline-offset: 2px;
+  }
+</style>
