@@ -29,7 +29,7 @@ const learnings: Learning[] = [
   {
     title: "Flutter + BLoC Architecture",
     description:
-      "Used BLoC for state management in multiple production-grade apps including Inventarya and AEDP. Solid and scalable.",
+      "Used BLoC for state management in multiple production-grade apps. Solid and scalable.",
     date: "2024-04",
   },
   {
