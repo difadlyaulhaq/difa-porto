@@ -1,7 +1,6 @@
 // src/components/About/experienceData.js
 
 import alfajrImg from "../../assets/about/experience/alfajr_work.png"; 
-import africaImg from "../../assets/about/experience/africa_project.png"; 
 //bangkit
 import bangkitImg from "../../assets/about/experience/bangkit_cert.png"; 
 import bangkitImg2 from "../../assets/about/experience/Bangkit-meet.png";
@@ -27,7 +26,6 @@ import amccLogo from "../../assets/about/logos/amcc.png";
 import bangkitLogo from "../../assets/about/logos/Bangkit.png";
 import amikomLogo from "../../assets/about/logos/amikom.png";
 import alfajrLogo from "../../assets/about/logos/Alfajr-umroh.png";
-import africaLogo from "../../assets/about/logos/africa.png";
 
 export const experiences = [
   {
@@ -54,28 +52,6 @@ export const experiences = [
   },
   {
     id: 2,
-    type: 'work',
-    image: africaImg,
-    logo: africaLogo, // Placeholder
-    title: 'Mobile App Developer',
-    role: 'Omar Bin Khattab School (RA)',
-    period: 'Oct 2024 - June 2025',
-    location: 'Guinea-Bissau, West Africa (Remote)',
-    description: 'My first major international milestone. I developed the "Automated Educational Data Platform" (AEDP) to digitize school operations in West Africa, bridging language barriers and technical gaps.',
-    highlights: [
-      'Built a multilingual app (Arabic, English, Portuguese) to serve a diverse international user base.',
-      'Created a Role-Based Access Control (RBAC) system for secure interaction between teachers, students, and parents.',
-      'Enabled real-time grade uploads and offline-first data synchronization using Firebase.',
-      'Solved the challenge of delivering seamless performance in an area with varying internet connectivity.'
-    ],
-    skills: ['Flutter', 'Dart', 'Firebase Firestore', 'Internationalization (i18n)', 'Remote Collaboration'],
-    achievements: [
-      'Successfully digitized the academic management of a school abroad.',
-      'Delivered a robust product that handles 3 different languages flawlessly.'
-    ]
-  },
-  {
-    id: 3,
     type: 'education',
     image: [bangkitImg, bangkitImg2],
     logo: bangkitLogo,
@@ -97,7 +73,7 @@ export const experiences = [
     ]
   },
   {
-    id: 4,
+    id: 3,
     type: 'organization',
     image: [amccImg,amccImg2,amccImg3,amccImg4],
     logo: amccLogo,
@@ -119,7 +95,7 @@ export const experiences = [
     ]
   },
   {
-    id: 5,
+    id: 4,
     type: 'award',
     image: [competitionImg, competitionImg2, competitionImg3,competitionImg4,competitionImg5],
     logo: amikomLogo, // Placeholder
@@ -140,7 +116,7 @@ export const experiences = [
     ]
   },
   {
-    id: 6,
+    id: 5,
     type: 'education',
     image: campusImg,
     logo: amikomLogo,

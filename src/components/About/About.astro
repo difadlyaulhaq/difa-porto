@@ -3,10 +3,10 @@ import imageMePng from "$assets/about/me/me2.png";
 import ProseWrapper from "$layouts/ProseWrapper.astro";
 import ProfileCard from "./ProfileCard.svelte";
 
-import BounceCards from "./BounceCards.jsx";
+import ProfessionalJourney from "./ProfessionalJourney.jsx";
 import { getImage } from "astro:assets";
 import { experiences, typeConfig } from "./experienceData.js";
-import { Briefcase, GraduationCap, Users, Trophy, Award } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 import { Content } from "$content/main/about.md";
 
@@ -50,22 +50,6 @@ const optimizedExperiences = await Promise.all(
     };
   })
 );
-
-const experienceTransforms = optimizedExperiences.map((_, i) => {
-  const total = optimizedExperiences.length;
-  const middle = (total - 1) / 2;
-  const offset = i - middle;
-  const angle = offset * 5;
-  const x = offset * 120;
-  return `translate(${x}px) rotate(${angle}deg)`;
-});
-
-const iconMap = {
-  Briefcase,
-  GraduationCap,
-  Users,
-  Trophy
-};
 ---
 
 <head>
@@ -139,52 +123,25 @@ const iconMap = {
       </div>
     </div>
 
-    <!-- Experience Section with BounceCards -->
+    <!-- Experience Section -->
     <div id="experience" class="py-16">
       
       <div class="text-center mb-16 space-y-4">
-        <h2 class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
+        <h2 class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 uppercase tracking-tighter">
           Professional Journey
         </h2>
         <p class="text-gray-400 max-w-2xl mx-auto">
           Explore my journey through work, education, organizations, and achievements.
         </p>
       </div>
-
-      <!-- Cards -->
-      <BounceCards
-        client:idle
-        items={optimizedExperiences}
-        transformStyles={experienceTransforms}
-        containerWidth={1000}
-        containerHeight={500}
-        cardWidth={350}
-        cardHeight={250}
-        animationDelay={1}
-        animationStagger={0.08}
-        easeType="elastic.out(1, 0.5)"
-        enableHover={true}
-      />
-
-      <!-- Legend -->
-      <div class="flex flex-wrap justify-center gap-6 mt-8">
-          {Object.entries(typeConfig).map(([type, config]) => {
-            const Icon = iconMap[config.icon as keyof typeof iconMap] || Award;
-            return (
-              <div class="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full">
-                <Icon className="w-4 h-4 text-white" />
-                <span class="text-sm text-gray-300">{config.label}</span>
-              </div>
-            );
-          })}
-      </div>
-
-      <!-- Info text -->
       <div class="text-center mt-8">
         <p class="text-gray-500 text-sm">
-          Hover to interact • Click to view full details
+          Click on any card to view full details and gallery
         </p>
       </div>
+
+      <!-- Professional Journey Timeline -->
+      <ProfessionalJourney client:visible experiences={optimizedExperiences} />
     </div>
   </div>
 
