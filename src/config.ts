@@ -1,6 +1,6 @@
 export const BASE = '';
 export const SITE = 'https://flo-bit.dev';
-export const SITE_FAVICON = '🌎';
+export const SITE_FAVICON = '🙋🏻';
 
 export const BASE_COLOR = 'zinc';
 export const ACCENT_COLOR = 'sky';

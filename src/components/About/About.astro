@@ -14,79 +14,96 @@ const optimizedMe = await getImage({
 
 const imagesGlob = import.meta.glob("/src/assets/about/experience/*.{png,webp,jpg,jpeg}");
 
-const priority = [
-  "winning_moment",
-  "amcc_activity4",
-  "amcc_activity2",
-  "campus_life",
-  "amcc_activity1",
-  "amcc_activity3",
-  "winning_moment2",
-  "winning_moment3",
-  "winning_moment4",
-  "winning_moment5",
-  "Bangkit-meet",
-  "bangkit_cert",
-  "alfajr_work"
+const visualChronicles = [
+  {
+    fileName: "winning_moment",
+    title: "1st Place (Juara Utama): AI Ignition Informatics 2024.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "amcc_activity4",
+    title: "Mentoring AMCC Pelatihan Mobile App Development 2024",
+    category: "COMMUNITY"
+  },
+ 
+  {
+    fileName: "amcc_activity1",
+    title: "Mentoring AMCC Pelatihan Mobile App Development 2023-2024",
+    category: "COMMUNITY"
+  },
+  {
+    fileName: "amcc_activity3",
+    title: "Mentoring AMCC Pelatihan Mobile App Development 2023",
+    category: "COMMUNITY"
+  },
+  {
+    fileName: "winning_moment2",
+    title: "Finalist: App Development Competition MAGE 11 at ITS 2025",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "winning_moment3",
+    title: "Berkesempatan untuk bertemu dengan Wakil Menteri Kebudayaan RI,Giring Ganesha dalam acara 'Budaya Go' 2025.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "winning_moment5",
+    title: "3rd Runner Up: National IT Competition at Amikom Purwokerto 2025.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "winning_moment6",
+    title: "Joint Winner (Juara Harapan): 'Budaya Go' - Ministry of Culture RI 2025.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "Bangkit-meet",
+    title: "Bangkit Meetup",
+    category: "EVENT"
+  },
+  {
+    fileName: "bangkit_cert",
+    title: "Bangkit Certification",
+    category: "CERTIFICATE"
+  },
+  {
+    fileName: "alfajr_work",
+    title: "Alfajr Work Elearning",
+    category: "WORK"
+  }
 ];
 
-const sortedKeys = Object.keys(imagesGlob).sort((a, b) => {
-  const nameA = a.split("/").pop()?.replace(/\.[^/.]+$/, "") || "";
-  const nameB = b.split("/").pop()?.replace(/\.[^/.]+$/, "") || "";
-  const idxA = priority.indexOf(nameA);
-  const idxB = priority.indexOf(nameB);
-  return (idxA !== -1 ? idxA : 999) - (idxB !== -1 ? idxB : 999);
-});
+const experienceImages = (
+  await Promise.all(
+    visualChronicles.map(async (item) => {
+      const matchedPath = Object.keys(imagesGlob).find((path) => {
+        const filename = path.split("/").pop() || "";
+        const baseName = filename.replace(/\.[^/.]+$/, "");
+        return baseName === item.fileName;
+      });
 
-const experienceImages = await Promise.all(
-  sortedKeys.map(async (path) => {
-    const filename = path.split("/").pop() || "";
-    const baseName = filename.replace(/\.[^/.]+$/, "");
-    
-    let category = "EVENT";
-    let title = baseName;
-    
-    if (baseName.includes("winning_moment")) {
-      category = "COMPETITION";
-      title = baseName.replace("winning_moment", "Winning Moment").replace(/(\d+)/g, " $1");
-    } else if (baseName.includes("amcc_activity")) {
-      category = "COMMUNITY";
-      title = baseName.replace("amcc_activity", "AMCC Activity").replace(/(\d+)/g, " $1");
-    } else if (baseName.includes("bangkit_cert")) {
-      category = "CERTIFICATE";
-      title = "Bangkit Certification";
-    } else if (baseName.includes("Bangkit-meet")) {
-      category = "EVENT";
-      title = "Bangkit Meetup";
-    } else if (baseName.includes("alfajr_work")) {
-      category = "WORK";
-      title = "Alfajr Work Ecosystem";
-    } else if (baseName.includes("campus_life")) {
-      category = "CAMPUS";
-      title = "Amikom Campus Life";
-    }
-    
-    title = title
-      .split(/[-_ ]+/)
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      if (!matchedPath) {
+        console.warn(`Warning: Image with filename "${item.fileName}" not found in experience folder.`);
+        return null;
+      }
 
-    const imgResolver = imagesGlob[path];
-    const resolvedImg: any = await imgResolver();
-    
-    const optimized = await getImage({
-      src: resolvedImg.default,
-      width: 800,
-      format: "webp"
-    });
+      const imgResolver = imagesGlob[matchedPath];
+      const resolvedImg: any = await imgResolver();
+      
+      const optimized = await getImage({
+        src: resolvedImg.default,
+        width: 800,
+        format: "webp"
+      });
 
-    return {
-      src: optimized.src,
-      category,
-      title
-    };
-  })
-);
+      return {
+        src: optimized.src,
+        category: item.category,
+        title: item.title
+      };
+    })
+  )
+).filter((img) => img !== null);
 ---
 
 <head>
