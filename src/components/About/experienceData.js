@@ -105,10 +105,10 @@ export const experiences = [
     location: 'Indonesia',
     description: 'I love testing my skills against the best. Participating in hackathons and competitions pushes me to innovate under pressure.',
     highlights: [
-      '🏆 1st Place (Juara Utama): AI Ignition Informatics 2024.',
-      '🥈 Joint Winner (Juara Harapan): "Budaya Go" - Ministry of Culture RI 2025.',
-      '🥉 Finalist: App Development Competition MAGE 11 at ITS 2025.',
-      '🏅 3rd Runner Up: National IT Competition at Amikom Purwokerto 2025.'
+      ' 1st Place (Juara Utama): AI Ignition Informatics 2024.',
+      'Joint Winner (Juara Harapan): "Budaya Go" - Ministry of Culture RI 2025.',
+      'Finalist: App Development Competition MAGE 11 at ITS 2025.',
+      '3rd Runner Up: National IT Competition at Amikom Purwokerto 2025.'
     ],
     skills: ['Innovation', 'Pitching', 'Rapid Prototyping', 'Teamwork'],
     achievements: [

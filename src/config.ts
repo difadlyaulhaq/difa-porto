@@ -3,7 +3,7 @@ export const SITE = 'https://flo-bit.dev';
 export const SITE_FAVICON = '🌎';
 
 export const BASE_COLOR = 'zinc';
-export const ACCENT_COLOR = 'cyan';
+export const ACCENT_COLOR = 'sky';
 
 export const SOCIALS = {
 	GITHUB: 'https://github.com/difadlyaulhaq',

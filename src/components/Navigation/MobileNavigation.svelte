@@ -26,7 +26,7 @@
 
 <button
   type="button"
-  class="group flex items-center rounded-full mr-4 bg-white/90 px-4 py-2 text-sm font-medium text-base-800 shadow-lg shadow-base-800/5 ring-1 ring-base-900/5 backdrop-blur dark:bg-white/5 dark:text-base-200 dark:ring-white/10 dark:hover:ring-white/20 {classes}"
+  class="group flex items-center rounded-full mr-4 bg-white/80 border border-zinc-200 px-4 py-2 text-sm font-bold text-zinc-800 shadow-md backdrop-blur-md ring-1 ring-zinc-200/50 hover:ring-zinc-300 transition duration-300 {classes}"
   use:melt={$trigger}
   aria-label="Update dimensions"
 >
@@ -37,7 +37,7 @@
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    class="ml-2 h-auto w-4 stroke-base-500 group-hover:stroke-base-700 dark:group-hover:stroke-base-400"
+    class="ml-2 h-auto w-4 stroke-zinc-600 group-hover:stroke-zinc-800"
     aria-hidden="true"
   >
     <path
@@ -53,14 +53,14 @@
 {#if $open}
   <div
     transition:fade={{ duration: 300 }}
-    class="fixed inset-0 z-50 bg-base-800/40 backdrop-blur-sm dark:bg-black/50 transition-all duration-300"
+    class="fixed inset-0 z-50 bg-zinc-900/20 backdrop-blur-sm transition-all duration-300"
   ></div>
 
   <div use:melt={$content}>
     <div use:melt={$arrow}></div>
     <div
       transition:slide={{ duration: 300 }}
-      class="fixed inset-x-4 bottom-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 backdrop-blur-md ring-base-900/5 dark:bg-black dark:ring-white/10"
+      class="fixed inset-x-4 bottom-8 z-50 origin-top rounded-3xl bg-white border border-zinc-200 p-8 shadow-2xl backdrop-blur-xl ring-1 ring-zinc-200/50"
     >
       <div class="flex flex-row-reverse items-center justify-between">
         <button
@@ -71,7 +71,7 @@
           <svg
             viewBox="0 0 24 24"
             aria-hidden="true"
-            class="h-6 w-6 text-base-500 dark:text-base-400"
+            class="h-6 w-6 text-zinc-500"
           >
             <path
               d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
@@ -80,13 +80,13 @@
             />
           </svg>
         </button>
-        <h2 class="text-sm font-medium text-base-600 dark:text-base-400">
+        <h2 class="text-sm font-bold text-zinc-600">
           navigation
         </h2>
       </div>
       <nav class="mt-6">
         <ul
-          class="-my-2 divide-y divide-white/10 text-base text-base-800 dark:divide-base-100/5 dark:text-base-100"
+          class="-my-2 divide-y divide-zinc-100 text-base text-zinc-800"
         >
           {#each items as item}
             <MobileNavigationItem current={item} {active} {hide} />

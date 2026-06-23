@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "$layouts/BaseLayout.astro";
 import About from "$components/About/About.astro";
-import Learning from "$components/Learning/Learning.svelte";
+import TechArsenal from "$components/Learning/TechArsenal.svelte";
 import Contact from "$components/Contact/Contact.astro";
 import Projects from "$components/Projects/Projects.astro";
 import Hero from "$components/Hero/Hero.svelte";
@@ -24,7 +24,7 @@ const projects = await getFeaturedProjects();
 
   <!-- <BlogLatest /> -->
 
-  <Learning client:visible />
+  <TechArsenal client:visible />
 
   <Contact />
 

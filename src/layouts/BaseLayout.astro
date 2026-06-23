@@ -4,7 +4,7 @@ const { title, description, image } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="antialiased dark">
+<html lang="en" class="antialiased light">
   <head>
     <BaseHead title={title} description={description} image={image} />
 
@@ -24,15 +24,30 @@ const { title, description, image } = Astro.props;
       }
 
       pre {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        background-color: rgba(0, 0, 0, 0.03) !important;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background-color: rgba(255, 255, 255, 0.8) !important;
         border-radius: 0.75rem !important;
       }
 
-      html.dark pre {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        border-radius: 0.75rem !important;
+      /* Custom Premium Scrollbar for Light Mode */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #ffffff;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 9999px;
+        border: 2px solid #ffffff;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.25);
+      }
+
+      /* Smooth Scrolling and Custom Selection */
+      html {
+        scroll-behavior: smooth;
       }
     </style>
 
@@ -42,9 +57,27 @@ const { title, description, image } = Astro.props;
   </head>
 
   <body
-    class="w-full min-h-screen bg-white dark:bg-base-950 transition-colors duration-150  font-sans"
+    class="w-full min-h-screen bg-[#f0f6fb] text-zinc-800 transition-colors duration-150 font-sans overflow-x-hidden selection:bg-sky-500/10 selection:text-sky-900"
   >
-    <!-- ✅ font-sans ditambahkan di sini -->
-    <slot />
+    <!-- Background Dot Grid Overlay -->
+    <div class="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+    
+    <!-- Ambient light source (Soft glowing blobs) in background -->
+    <div class="fixed top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-sky-50 blur-[120px] pointer-events-none z-0 opacity-50"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-cyan-50 blur-[120px] pointer-events-none z-0 opacity-50"></div>
+
+    <!-- Noise filter SVG overlay -->
+    <div class="fixed inset-0 pointer-events-none z-[100] opacity-[0.015]">
+      <svg class="h-full w-full">
+        <filter id="noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)"></rect>
+      </svg>
+    </div>
+
+    <div class="relative z-10">
+      <slot />
+    </div>
   </body>
 </html>

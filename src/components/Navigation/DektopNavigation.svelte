@@ -13,7 +13,7 @@
 
 <nav class={classes}>
   <ul
-    class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-base-800 shadow-lg shadow-base-800/5 ring-1 ring-base-900/5 backdrop-blur dark:bg-white/5 dark:text-base-200 dark:ring-white/10"
+    class="flex rounded-full bg-[#070714]/80 px-4 py-1 text-sm font-medium text-gray-200 shadow-xl shadow-black/40 border border-white/5 backdrop-blur-xl ring-1 ring-violet-500/20"
   >
     {#each items as item}
       <NavigationItem href={`/#${item}`} isActive={active == item}>{item}</NavigationItem>
