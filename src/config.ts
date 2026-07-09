@@ -10,3 +10,4 @@ export const SOCIALS = {
 	LINKEDIN: 'https://www.linkedin.com/in/difa-dlyaulhaq/',
 	MAIL: 'mailto:difadlyaulhaq2@gmail.com',
 };
+  

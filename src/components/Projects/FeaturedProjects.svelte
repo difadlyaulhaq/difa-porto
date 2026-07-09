@@ -3,14 +3,22 @@
 
   let activeFilter = 'All';
 
-  // Categories list (Design and Other deleted)
-  const filters = ['All', 'Web', 'Mobile'];
+  // Categories list
+  const filters = ['All', 'Web', 'Mobile', 'AI'];
 
   // Helper function to map a project to its category based on tags & title
   function getCategory(project) {
     const tags = (project.tags || []).map(t => t.toLowerCase());
     const title = (project.title || "").toLowerCase();
     
+    // Check AI first (including AI, Machine Learning, ML, NLP, TensorFlow, Python, SKOps, etc.)
+    if (
+      tags.some(t => ['ai', 'machine learning', 'ml', 'nlp', 'tensorflow', 'pytorch', 'deep learning', 'skops', 'scikit-learn', 'python', 'gradio'].includes(t)) ||
+      title.includes('ai') || 
+      title.includes('analyzer')
+    ) {
+      return 'AI';
+    }
     // Check Mobile (including design of mobile apps, kotlin, flutter, capacitor, mobile)
     if (
       tags.some(t => ['flutter', 'kotlin', 'mobile', 'android', 'ios', 'mobile app', 'figma', 'ui & ux', 'design'].includes(t)) ||
@@ -27,7 +35,7 @@
     ) {
       return 'Web';
     }
-    // Default fallback to Web if not matched (to ensure only Web and Mobile remain)
+    // Default fallback to Web if not matched (to ensure only Web, Mobile, and AI remain)
     return 'Web';
   }
 

@@ -1,0 +1,49 @@
+---
+name: 'Web Risk & Content Analyzer'
+date: '2026-07-09'
+featured: true
+
+thumbnail: '/src/assets/projects/web-risk-content-analyzer/thumbnail.png'
+video: '/src/assets/projects/web-risk-content-analyzer/video-thumbnail.mp4'
+aspect: 'aspect-video'
+projectUrl: 'https://huggingface.co/spaces/preacher19/web-risk-analyzer/'
+codeUrl: 'https://github.com/difadlyaulhaq/web-risk-content-analyzer'
+
+projectPageVersion: 'standard'
+tags:
+  - 'AI'
+  - 'Machine Learning'
+  - 'NLP'
+  - 'Python'
+  - 'Gradio'
+  - 'Scikit-Learn'
+
+mainTags:
+  - 'AI'
+  - 'Machine Learning'
+  - 'NLP'
+
+images:
+  - '/src/assets/projects/web-risk-content-analyzer/thumbnail.png'
+---
+import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
+
+<ProjectStandard project={frontmatter}>
+**Web Risk & Content Analyzer** is a professional Python and Machine Learning-based system designed to analyze the risk level of promotional materials, comments, advertisements, or web page content in Indonesian. The system specifically targets high-risk categories such as unverified promotions and online gambling content (Anti-Judol).
+
+### Technical Overview
+By combining **Natural Language Processing (NLP)**, hybrid feature extraction, and regularized **Logistic Regression**, the system achieves fast, lightweight, and highly accurate detection. 
+
+The pipeline consists of:
+1. **Data Collection & Cleaning**: Custom scraping tool targeting search engine results, coupled with heuristic-driven auto-labeling and deduplication.
+2. **Text Augmentation**: Synthetic sample generation to balance minority classes and improve model robustness against slang or obfuscated text (e.g., gambling slang).
+3. **Hybrid Feature Engineering**: TF-IDF (1-gram & 2-gram) vectorization merged with 6 key domain-specific features (keyword scores, text length, specific patterns like "rtp", "%", and combinations like "slot"+"gacor", "depo"+"wd").
+4. **Regularized Detection**: Regularized Logistic Regression model trained with Stratified Cross-Validation and serialized via Skops.
+5. **Interactive Interface**: An interactive web demo built with **Gradio** and hosted on **Hugging Face Spaces** for real-time risk assessment.
+
+### Evaluation Metrics
+- **Accuracy**: **95.65%**
+- **Weighted F1-Score**: **95.65%**
+- **Cross-Validation F1-Score**: **92.02%**
+- **Confusion Matrix**: High precision (0.95+) and recall (0.95+) across both safe and gambling content categories.
+</ProjectStandard>
