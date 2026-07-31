@@ -11,11 +11,12 @@
     const tags = (project.tags || []).map(t => t.toLowerCase());
     const title = (project.title || "").toLowerCase();
     
-    // Check AI first (including AI, Machine Learning, ML, NLP, TensorFlow, Python, SKOps, etc.)
+    // Check AI first (specifically AI, Machine Learning, ML, NLP, PyTorch, Hugging Face, LoRA, RoBERTa, etc.)
     if (
-      tags.some(t => ['ai', 'machine learning', 'ml', 'nlp', 'tensorflow', 'pytorch', 'deep learning', 'skops', 'scikit-learn', 'python', 'gradio'].includes(t)) ||
-      title.includes('ai') || 
-      title.includes('analyzer')
+      tags.some(t => ['ai', 'machine learning', 'ml', 'nlp', 'pytorch', 'hugging face', 'lora', 'roberta'].includes(t)) ||
+      title.includes('lora') || 
+      title.includes('roberta') ||
+      title.includes('web risk')
     ) {
       return 'AI';
     }
