@@ -11,7 +11,7 @@
 <li>
   <a
     href="/#{current}"
-    class="block py-2 {active == current ? 'dark:text-accent-400' : ''}"
+    class="block py-2 font-medium {active == current ? 'text-violet-600 font-bold' : 'text-zinc-600'}"
     on:click={hide}
   >
     {current}

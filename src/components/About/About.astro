@@ -1,14 +1,10 @@
 ---
-import imageMePng from "$assets/about/me/me2.png";
+import imageMePng from "$assets/about/me/DIFA.png";
 import ProseWrapper from "$layouts/ProseWrapper.astro";
 import ProfileCard from "./ProfileCard.svelte";
 
-import ProfessionalJourney from "./ProfessionalJourney.jsx";
 import { getImage } from "astro:assets";
-import { experiences, typeConfig } from "./experienceData.js";
-import { Award } from 'lucide-react';
-
-import { Content } from "$content/main/about.md";
+import { experiences } from "./experienceData.js";
 
 const optimizedMe = await getImage({
   src: imageMePng,
@@ -16,139 +12,287 @@ const optimizedMe = await getImage({
   format: 'webp'
 });
 
-const optimizedExperiences = await Promise.all(
-  experiences.map(async (exp) => {
-    let optimizedImageSrc;
-    if (Array.isArray(exp.image)) {
-        const optimizedImages = await Promise.all(exp.image.map(async (img) => {
-            const opt = await getImage({
-                src: img,
-                width: 600,
-                format: 'webp'
-            });
-            return opt.src;
-        }));
-        optimizedImageSrc = optimizedImages;
-    } else {
-        const optimizedImage = await getImage({
-            src: exp.image,
-            width: 600,
-            format: 'webp'
-        });
-        optimizedImageSrc = optimizedImage.src;
-    }
+const imagesGlob = import.meta.glob("/src/assets/about/experience/*.{png,webp,jpg,jpeg}");
 
-    const optimizedLogo = await getImage({
-      src: exp.logo,
-      width: 200,
-      format: 'webp'
-    });
-    return {
-      ...exp,
-      image: optimizedImageSrc,
-      logo: optimizedLogo.src
-    };
-  })
-);
+const visualChronicles = [
+  {
+    fileName: "winning_moment",
+    title: "1st Place (Juara Utama): AI Ignition Informatics 2024.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "amcc_activity4",
+    title: "Mentoring AMCC Pelatihan Mobile App Development 2024",
+    category: "COMMUNITY"
+  },
+ 
+  {
+    fileName: "amcc_activity1",
+    title: "Mentoring AMCC Pelatihan Mobile App Development 2023-2024",
+    category: "COMMUNITY"
+  },
+  {
+    fileName: "amcc_activity3",
+    title: "Mentoring AMCC Pelatihan Mobile App Development 2023",
+    category: "COMMUNITY"
+  },
+  {
+    fileName: "winning_moment2",
+    title: "Finalist: App Development Competition MAGE 11 at ITS 2025",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "winning_moment3",
+    title: "Berkesempatan untuk bertemu dengan Wakil Menteri Kebudayaan RI,Giring Ganesha dalam acara 'Budaya Go' 2025.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "winning_moment5",
+    title: "3rd Runner Up: National IT Competition at Amikom Purwokerto 2025.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "winning_moment6",
+    title: "Joint Winner (Juara Harapan): 'Budaya Go' - Ministry of Culture RI 2025.",
+    category: "COMPETITION"
+  },
+  {
+    fileName: "Bangkit-meet",
+    title: "Bangkit Meetup",
+    category: "EVENT"
+  },
+  {
+    fileName: "bangkit_cert",
+    title: "Bangkit Certification",
+    category: "CERTIFICATE"
+  },
+  {
+    fileName: "alfajr_work",
+    title: "Alfajr Work Elearning",
+    category: "WORK"
+  }
+];
+
+const experienceImages = (
+  await Promise.all(
+    visualChronicles.map(async (item) => {
+      const matchedPath = Object.keys(imagesGlob).find((path) => {
+        const filename = path.split("/").pop() || "";
+        const baseName = filename.replace(/\.[^/.]+$/, "");
+        return baseName === item.fileName;
+      });
+
+      if (!matchedPath) {
+        console.warn(`Warning: Image with filename "${item.fileName}" not found in experience folder.`);
+        return null;
+      }
+
+      const imgResolver = imagesGlob[matchedPath];
+      const resolvedImg: any = await imgResolver();
+      
+      const optimized = await getImage({
+        src: resolvedImg.default,
+        width: 800,
+        format: "webp"
+      });
+
+      return {
+        src: optimized.src,
+        category: item.category,
+        title: item.title
+      };
+    })
+  )
+).filter((img) => img !== null);
 ---
 
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 
-<div class="relative isolate overflow-hidden bg-background font-sans dark mb-32">
+<div class="relative isolate overflow-hidden bg-transparent font-sans mt-20 md:mt-32 mb-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <!-- About Section -->
     <div id="about" class="py-16 md:py-24 section">
-      <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+      <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-16 items-center">
         
-        <!-- Profile Card -->
-        <div class="lg:pl-20 w-full flex justify-center">
-          <div class="max-w-[300px] sm:max-w-sm px-2.5 lg:max-w-none">
-            <div class="rotate-1 lg:rotate-2 m-0 lg:-m-16 hover:rotate-0 transition-all duration-700 ease-out hover:scale-105">
-              <ProfileCard
-                client:only="svelte"
-                name="Difa Dlyaul Haq"
-                title="Software Engineer"
-                handle="difadlyh"
-                status="Available for work"
-                contactText="Let's Talk"
-                avatarUrl={optimizedMe.src}
-                showUserInfo={true}
-                enableTilt={true}
-                enableMobileTilt={false}
-              />
+        <!-- About Content (Left Column) -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl uppercase relative inline-block">
+              Who I Am
+              <span class="absolute bottom-[-12px] left-0 w-24 h-1.5 bg-sky-500 rounded-full"></span>
+            </h2>
+            <h3 class="text-xl sm:text-2xl font-bold text-zinc-800 mt-8 tracking-tight">
+              Difa Dlyaul Haq
+            </h3>
+          </div>
+
+          <div class="text-zinc-600 space-y-4 text-sm sm:text-base leading-relaxed">
+            <p>
+              I am a <strong>Bachelor of Informatics student</strong> at Universitas Amikom Yogyakarta specializing in Software Engineering and Mobile/Web development. With experience as a Freelance Software Developer at Alfajr Umroh and Coordinator/Mentor at AMCC, I focus on building scalable web, mobile, and AI solutions.
+            </p>
+            <p>
+              My journey includes achievements like winning 1st Place at AI Ignition Informatics 2024 and being a distinction graduate from Bangkit Academy. I am passionate about deep learning, secure web architectures, and crafting premium user experiences.
+            </p>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-3 gap-6 pt-8 border-t border-zinc-200 max-w-md">
+            <div>
+              <div class="text-3xl sm:text-4xl font-black text-zinc-900 tracking-tight">3+</div>
+              <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mt-1">Years Exp.</div>
+            </div>
+            <div>
+              <div class="text-3xl sm:text-4xl font-black text-zinc-900 tracking-tight">10+</div>
+              <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mt-1">Projects</div>
+            </div>
+            <div>
+              <div class="text-3xl sm:text-4xl font-black text-zinc-900 tracking-tight">3.71</div>
+              <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mt-1">GPA</div>
             </div>
           </div>
         </div>
 
-        <!-- About Content -->
-        <div class="lg:order-first lg:row-span-2">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm mb-6">
-            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            <span class="text-sm text-gray-300 font-medium">About Me</span>
-          </div>
-
-          <ProseWrapper
-            class="prose-h1:text-4xl prose-h1:md:text-5xl prose-h1:lg:text-6xl prose-h1:tracking-tight prose-h1:bg-gradient-to-r prose-h1:from-white prose-h1:via-cyan-200 prose-h1:to-blue-400 prose-h1:bg-clip-text prose-h1:text-transparent prose-p:text-gray-300 prose-p:text-lg prose-p:leading-relaxed prose-a:text-cyan-400 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-cyan-300"
-          >
-            <Content />
-          </ProseWrapper>
-
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-wrap gap-4 mt-8">
-            <a 
-              href="#experience" 
-              class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
-            >
-              <span>View Experience</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </a>
-            <a 
-              href="#contact" 
-              class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-white font-semibold rounded-full transition-all duration-300"
-            >
-              <span>Get in Touch</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+        <!-- Portrait Image (Right Column) -->
+        <div class="w-full flex justify-center lg:justify-end">
+          <div class="relative max-w-sm sm:max-w-md w-full aspect-[4/5] rounded-[32px] overflow-hidden border border-zinc-200 shadow-xl bg-white group">
+            <!-- Dot grid pattern behind photo -->
+            <div class="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:16px_16px] z-0"></div>
+            
+            <img
+              src={optimizedMe.src}
+              alt="Difa Dlyaul Haq"
+              class="w-full h-full object-cover relative z-10 transition-all duration-700 group-hover:scale-[1.02] filter contrast-[1.05] drop-shadow-[0_25px_45px_rgba(0,0,0,0.22)]"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
+
       </div>
     </div>
 
     <!-- Experience Section -->
-    <div id="experience" class="py-16">
-      
-      <div class="text-center mb-16 space-y-4">
-        <h2 class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 uppercase tracking-tighter">
-          Professional Journey
+    <div id="experience" class="py-16 relative">
+      <!-- Subtle dot grid background only in this section -->
+      <div class="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.02)_1.5px,transparent_1.5px)] bg-[size:24px_24px] pointer-events-none -z-10"></div>
+
+      <div class="text-center mb-16 space-y-2">
+        <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-[0.2em]">CAREER PATH</span>
+        <h2 class="text-4xl md:text-5xl font-black text-zinc-900 uppercase tracking-tighter block">
+          Experience
         </h2>
-        <p class="text-gray-400 max-w-2xl mx-auto">
-          Explore my journey through work, education, organizations, and achievements.
-        </p>
-      </div>
-      <div class="text-center mt-8">
-        <p class="text-gray-500 text-sm">
-          Click on any card to view full details and gallery
-        </p>
       </div>
 
       <!-- Professional Journey Timeline -->
-      <ProfessionalJourney client:visible experiences={optimizedExperiences} />
+      <div class="max-w-4xl mx-auto px-4 relative">
+        <!-- Vertical Timeline Line -->
+        <div class="absolute left-6 md:left-8 top-3 bottom-3 w-px bg-zinc-200"></div>
+
+        <div class="space-y-12">
+          {experiences.map((exp) => (
+            <div class="relative flex gap-4 md:gap-8 group">
+              <!-- Timeline Marker Column -->
+              <div class="flex flex-col items-center flex-shrink-0 relative z-10 w-4 md:w-8 mt-2">
+                <!-- Solid black dot on light background -->
+                <div class="w-3.5 h-3.5 rounded-full bg-zinc-900 border-2 border-white flex-shrink-0 transition-all duration-300 group-hover:scale-125 shadow-md"></div>
+              </div>
+
+              <!-- Content Area -->
+              <div class="flex-grow flex flex-col md:flex-row md:items-start gap-4 md:gap-8 pb-4">
+                <!-- Date Capsule -->
+                <div class="flex-shrink-0 md:mt-1">
+                  <span class="inline-block px-3 py-1 bg-zinc-950 border border-zinc-800 rounded-full text-xs font-bold text-white tracking-wide whitespace-nowrap shadow-sm min-w-[105px] text-center">
+                    {exp.period}
+                  </span>
+                </div>
+
+                <!-- Text Details -->
+                <div class="flex-grow space-y-3">
+                  <h3 class="text-xl md:text-2xl font-bold text-zinc-900 leading-tight tracking-tight">
+                    {exp.title}
+                  </h3>
+
+                  <!-- Subtitle: Icon + Organization/Role + Location -->
+                  <div class="flex flex-wrap items-center gap-2 text-zinc-500 text-sm font-medium">
+                    {exp.type === 'education' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-zinc-400"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                    )}
+                    {exp.type === 'work' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-zinc-400"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    )}
+                    {exp.type === 'organization' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-zinc-400"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    )}
+                    {exp.type === 'award' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-zinc-400"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a6 6 0 0 1 6 6v1a6 6 0 0 1-6 6 6 6 0 0 1-6-6V8a6 6 0 0 1 6-6z"/></svg>
+                    )}
+                    <span>{exp.role}</span>
+                    <span class="text-zinc-400">•</span>
+                    <span>{exp.location}</span>
+                  </div>
+
+                  <!-- Highlights List -->
+                  <ul class="list-disc pl-5 space-y-2 text-zinc-600 text-sm leading-relaxed mt-4">
+                    {exp.highlights.map((highlight) => (
+                      <li class="marker:text-zinc-300">{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Chronicles Section -->
+    <div id="visual-chronicles" class="py-16 md:py-24 border-t border-zinc-200/60 relative">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div class="space-y-3">
+          <span class="text-[11px] font-bold text-sky-600 uppercase tracking-[0.2em]">MEMORIES & MILESTONES</span>
+          <h2 class="text-4xl md:text-5xl font-black text-zinc-900 uppercase tracking-tighter block">
+            Visual Chronicles
+          </h2>
+          <p class="text-zinc-500 max-w-2xl text-sm sm:text-base font-medium">
+            A curated collection of moments, workspaces, and creative explorations that define my journey.
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <span class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-zinc-200/60 rounded-full text-xs font-bold text-zinc-700 shadow-sm select-none">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
+            {experienceImages.length} Shots Captured
+          </span>
+        </div>
+      </div>
+
+      <!-- Photo Grid (Masonry columns) -->
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6">
+        {
+          experienceImages.map((img) => (
+            <div class="break-inside-avoid mb-6 relative group overflow-hidden rounded-[2rem] border border-zinc-200/60 bg-white shadow-md transition-all duration-500 hover:border-zinc-300 hover:-translate-y-1 hover:shadow-xl">
+              <img
+                src={img.src}
+                alt={img.title}
+                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-103"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/30 to-transparent flex flex-col justify-end p-5 sm:p-6">
+                <span class="text-[10px] font-bold text-sky-400 uppercase tracking-[0.2em] mb-1.5">{img.category}</span>
+                <h3 class="text-white text-sm sm:text-base font-extrabold leading-snug">{img.title}</h3>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 
   <!-- Background Effects -->
-  <div class="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
-  <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
-  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute top-1/4 left-0 w-96 h-96 bg-sky-50/10 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-sky-50/5 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-50/10 rounded-full blur-3xl -z-10"></div>
 </div>
 
 <style>

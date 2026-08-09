@@ -5,9 +5,9 @@
   export let avatarUrl = '';
   export let iconUrl = '';
   export let grainUrl = '';
-  export let innerGradient = 'linear-gradient(145deg, rgba(34, 211, 238, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%)';
+  export let innerGradient = 'linear-gradient(145deg, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, rgba(6, 182, 212, 0.15) 100%)';
   export let behindGlowEnabled = true;
-  export let behindGlowColor = 'rgba(34, 211, 238, 0.4)';
+  export let behindGlowColor = 'rgba(139, 92, 246, 0.4)';
   export let behindGlowSize = '50%';
   export let className = '';
   export let enableTilt = true;

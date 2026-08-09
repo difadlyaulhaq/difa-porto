@@ -1,0 +1,48 @@
+---
+name: 'Analisis Pengaruh Hyperparameter LoRA terhadap Kinerja RoBERTa pada Low-Resource NER'
+date: '2026-07-09'
+featured: true
+
+thumbnail: '/src/assets/projects/lora-roberta-frankenstein-ner/thumbnail.png'
+aspect: 'aspect-video'
+projectUrl: 'https://huggingface.co/spaces/preacher19/lora-roberta-frankenstein-ner-demo'
+codeUrl: 'https://github.com/difadlyaulhaq/lora-roberta-frankenstein-ner'
+
+projectPageVersion: 'standard'
+tags:
+  - 'AI'
+  - 'Machine Learning'
+  - 'NLP'
+  - 'PyTorch'
+  - 'Hugging Face'
+  - 'Transformers'
+  - 'LoRA'
+  - 'RoBERTa'
+
+mainTags:
+  - 'AI'
+  - 'Machine Learning'
+  - 'NLP'
+
+images:
+  - '/src/assets/projects/lora-roberta-frankenstein-ner/thumbnail.png'
+---
+import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
+
+<ProjectStandard project={frontmatter}>
+**LoRA-RoBERTa Token Classification Pipeline** is a specialized Deep Learning and Natural Language Processing (NLP) system fine-tuned for Named Entity Recognition (NER) on Mary Shelley's classic novel, *Frankenstein*. Built with Hugging Face **Transformers** and **PEFT (Low-Rank Adaptation)**, this pipeline enables efficient parameter-efficient fine-tuning (PEFT) of RoBERTa models for token-level entity extraction.
+
+### Technical Overview
+Standard full fine-tuning of Large Language Models (LLMs) and transformer encoders requires high computational resource overhead. By applying **LoRA (Low-Rank Adaptation)**, rank-decomposition matrices are injected into the transformer attention layers, significantly reducing trainable parameter counts while preserving state-of-the-art accuracy.
+
+The pipeline consists of:
+1. **Dataset Preprocessing & Alignment**: Text tokenization and character-level entity alignment matching tokens to entity labels across novel passages.
+2. **LoRA Fine-Tuning (PEFT)**: Parameter-Efficient Fine-Tuning applied to RoBERTa transformer layers using Hugging Face `peft` and `transformers`.
+3. **Token Classification**: Multi-class token classification identifying entities (Characters, Locations, Artifacts, and Key Terms).
+4. **Interactive Hugging Face Demo**: Deployed as an interactive **Gradio** web application hosted on Hugging Face Spaces for real-time entity recognition and inference visualization.
+
+### Key Highlights & Features
+- **Efficiency**: Low-rank matrix adaptation achieves over **90%+ reduction in trainable parameters** compared to full model fine-tuning.
+- **Precision Extraction**: Accurately classifies custom named entities across complex literary text structures.
+- **Interactive Interface**: Live text input and token highlight visualization via Gradio demo on Hugging Face Spaces.
+</ProjectStandard>
