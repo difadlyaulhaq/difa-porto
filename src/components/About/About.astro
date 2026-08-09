@@ -1,5 +1,5 @@
 ---
-import imageMePng from "$assets/about/me/me2.png";
+import imageMePng from "$assets/about/me/DIFA.png";
 import ProseWrapper from "$layouts/ProseWrapper.astro";
 import ProfileCard from "./ProfileCard.svelte";
 
@@ -163,7 +163,7 @@ const experienceImages = (
             <img
               src={optimizedMe.src}
               alt="Difa Dlyaul Haq"
-              class="w-full h-full object-cover relative z-10 transition-all duration-700 group-hover:scale-[1.02]"
+              class="w-full h-full object-cover relative z-10 transition-all duration-700 group-hover:scale-[1.02] filter contrast-[1.05] drop-shadow-[0_25px_45px_rgba(0,0,0,0.22)]"
               loading="lazy"
               decoding="async"
             />
@@ -278,9 +278,9 @@ const experienceImages = (
                 class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-103"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/30 to-transparent flex flex-col justify-end p-5 sm:p-6">
                 <span class="text-[10px] font-bold text-sky-400 uppercase tracking-[0.2em] mb-1.5">{img.category}</span>
-                <h3 class="text-white text-lg font-black leading-tight">{img.title}</h3>
+                <h3 class="text-white text-sm sm:text-base font-extrabold leading-snug">{img.title}</h3>
               </div>
             </div>
           ))
