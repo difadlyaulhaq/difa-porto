@@ -1,0 +1,33 @@
+---
+name: 'Multilingual Sentiment Analysis'
+date: '2024-07-20'
+featured: true
+
+thumbnail: '/src/assets/projects/multilingual-sa/thumbnail.jpg'
+aspect: 'aspect-[16/9]'
+codeUrl: 'https://github.com/difadlyaulhaq/multilingual-sa'
+projectUrl: 'https://github.com/difadlyaulhaq/multilingual-sa'
+
+description: 'A machine learning project to scrape and analyze sentiment of multilingual YouTube comments using XLM-RoBERTa.'
+projectPageVersion: 'standard'
+tags:
+  - 'python'
+  - 'machine learning'
+  - 'sentiment analysis'
+  - 'youtube'
+  - 'scraping'
+
+mainTags:
+  - 'python'
+  - 'machine learning'
+
+images:
+  - '/src/assets/projects/multilingual-sa/thumbnail.jpg'
+---
+import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
+
+<ProjectStandard project={frontmatter}>
+This project focuses on scraping comments from YouTube videos and performing sentiment analysis using the **XLM-RoBERTa** machine learning model. It is a cutting-edge language model that excels at processing multilingual text, including Indonesian and English.
+
+Key features include **zero-shot sentiment analysis** using a pre-trained `cardiffnlp/twitter-xlm-roberta-base-sentiment` model from Hugging Face, an advanced preprocessing pipeline that transforms emojis into text representations to retain emotional context, and a custom script for fine-tuning the model to achieve higher accuracy specifically for the YouTube domain.
+</ProjectStandard>
