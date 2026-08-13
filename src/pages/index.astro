@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "$layouts/BaseLayout.astro";
 import About from "$components/About/About.astro";
+import Certifications from "$components/About/Certifications.svelte";
 import TechArsenal from "$components/Learning/TechArsenal.svelte";
 import Contact from "$components/Contact/Contact.astro";
 import Projects from "$components/Projects/Projects.astro";
@@ -19,6 +20,8 @@ const projects = await getFeaturedProjects();
   <Hero client:load />
   
   <About />
+
+  <Certifications client:visible />
 
   <Projects projects={projects} />
 
