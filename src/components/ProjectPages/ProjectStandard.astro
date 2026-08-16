@@ -32,9 +32,23 @@ const aspectClass = project.aspect || "aspect-video";
     {
       project.images ? (
         <div class="mx-auto mt-8 max-w-2xl px-4 sm:px-6 md:max-w-5xl md:px-8">
-          <div class={`grid grid-cols-1 ${project.aspect?.includes('9/19') || project.aspect?.includes('9/16') ? 'sm:grid-cols-2 md:grid-cols-3' : 'md:grid-cols-2'} gap-6 md:gap-8`}>
-            {projectImages.map((img, i) => (
-              <div class={`group relative ${aspectClass} overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50/80 backdrop-blur-sm shadow-lg shadow-zinc-200/40 hover:shadow-zinc-300/60 hover:border-zinc-300 hover:-translate-y-1 transition-all duration-500`}>
+          <div class={`grid grid-cols-1 ${project.aspect?.includes('9/19') || project.aspect?.includes('9/16') ? 'sm:grid-cols-2 md:grid-cols-6' : 'md:grid-cols-2'} gap-6 md:gap-8 items-start`}>
+            {projectImages.map((img, i) => {
+              const imagePath = project.images[i] || "";
+              // Identify landscape/web images based on filename conventions
+              const isLandscape = imagePath.includes("screenshot") || imagePath.includes("desktop") || imagePath.includes("web") || imagePath.includes("landscape");
+              const isMobileGrid = project.aspect?.includes('9/19') || project.aspect?.includes('9/16');
+              
+              const currentAspect = isLandscape ? "aspect-video" : aspectClass;
+              
+              let spanClass = '';
+              if (isMobileGrid) {
+                 // Mobile images take 2/6 (33%), Landscape images take 3/6 (50%) - exactly 1.5x bigger!
+                 spanClass = isLandscape ? 'sm:col-span-2 md:col-span-3' : 'sm:col-span-1 md:col-span-2';
+              }
+
+              return (
+              <div class={`group relative ${currentAspect} ${spanClass} overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50/80 backdrop-blur-sm shadow-lg shadow-zinc-200/40 hover:shadow-zinc-300/60 hover:border-zinc-300 hover:-translate-y-1 transition-all duration-500`}>
                 <div class="h-full w-full relative overflow-hidden">
                   <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                   <Image
@@ -45,7 +59,7 @@ const aspectClass = project.aspect || "aspect-video";
                   <div class="absolute inset-0 bg-zinc-50/50 backdrop-blur-2xl" />
                 </div>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       ) : (
