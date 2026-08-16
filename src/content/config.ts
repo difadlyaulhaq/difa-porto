@@ -55,6 +55,7 @@ const projects = defineCollection({
     aspect: z.string().optional(),
 
     shortDescription: z.string().optional(),
+    description: z.string().optional(),
 
     images: z.array(image()).optional(),
     tags: z.array(z.string()).optional(),
