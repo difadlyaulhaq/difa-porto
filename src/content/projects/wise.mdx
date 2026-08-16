@@ -1,35 +1,74 @@
 ---
-name: 'WISE: WOUND IDENTIFICATION SYSTEM'
+name: 'WISE: Wound Identification System'
 date: '2024-05-20'
 featured: true
+category: 'AI'
 
-thumbnail: '/src/assets/projects/wise/Splashscreen.png'
-video: '/src/assets/projects/wise/video-thumbnail.mp4'
+thumbnail: '/src/assets/projects/wise/thumbnail.png'
 aspect: 'aspect-square'
-projectUrl: 'https://github.com/muhafiq/wise?tab=readme-ov-file'
+projectUrl: 'https://huggingface.co/spaces/preacher19/wound-identification-system'
 codeUrl: 'https://github.com/muhafiq/wise/tree/ml?tab=readme-ov-file'
 
 projectPageVersion: 'standard'
 tags:
-  - 'kotlin'
-  - 'mobile app'
-  - 'flask'
-  - 'android'
+  - 'AI'
+  - 'Machine Learning'
+  - 'Deep Learning'
+  - 'TensorFlow'
+  - 'Keras'
+  - 'CNN'
+  - 'Python'
+  - 'Kotlin'
+  - 'Mobile App'
 
 mainTags:
-  - 'kotlin'
-  - 'mobile app'
-  - 'flask'
+  - 'AI'
+  - 'Machine Learning'
+  - 'Deep Learning'
 
 images:
-  - '/src/assets/projects/wise/Splashscreen.png'
-  - '/src/assets/projects/wise/DetectionPage.png'
-  - '/src/assets/projects/wise/Desktop.png'
-  - '/src/assets/projects/wise/image.png'
+  - '/src/assets/projects/wise/predict-image.png'
+  - '/src/assets/projects/wise/train-val.png'
 ---
 import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
 
 <ProjectStandard project={frontmatter}>
-WISE (Wound Identification System) is a Kotlin-based mobile application that utilizes machine learning for wound classification. The system employs a CNN model to identify different types of wounds, providing real-time analysis and first-aid recommendations. Optimized for TensorFlow Lite (TFLite) or cloud-based inference, WISE ensures efficient deployment on mobile devices. My contributions focus on developing and integrating the ML model, enhancing accuracy, and optimizing performance for seamless real-time wound classification within the app. This project was developed as the final capstone during my time at Bangkit.
+**WISE (Wound Identification System)** is an advanced deep learning-based computer vision system designed to classify wound images into 10 distinct types. By utilizing a customized Convolutional Neural Network (CNN) model built with TensorFlow and Keras, WISE provides rapid and precise classification to assist in real-time first-aid recommendations.
 
+This AI model forms the core classification engine for the WISE mobile app, enabling efficient inference to help users identify wound categories and access appropriate medical first-aid guidelines.
+
+### Technical Overview
+The model leverages a lightweight, sequential CNN architecture optimized for swift processing on mobile or cloud environments.
+
+The pipeline and architecture consist of:
+1. **Dataset Split & Preparation**: The original raw dataset (7 classes) was expanded and split programmatically into a 10-class dataset (including detailed burn levels). The dataset was partitioned into **80% training data (29,758 images)** and **20% test data (6,022 images)**.
+2. **Data Augmentation**: Using `ImageDataGenerator` to perform real-time augmentation (shear range 0.2, zoom range 0.2, and horizontal flipping) to prevent overfitting and enhance generalizability across varying lighting and angles.
+3. **CNN Architecture**:
+   - **Input Layer**: `64 x 64` RGB images (3 channels).
+   - **Convolutional Layer 1**: 32 filters, 3x3 kernel, ReLU activation.
+   - **Pooling Layer 1**: MaxPooling (2x2).
+   - **Convolutional Layer 2**: 64 filters, 3x3 kernel, ReLU activation.
+   - **Pooling Layer 2**: MaxPooling (2x2).
+   - **Fully Connected Block**: Flatten layer followed by a Dense layer with 128 units and ReLU activation.
+   - **Output Layer**: Dense layer with 10 units and Softmax activation (categorical classification).
+
+### Supported Wound Classes
+The model is trained to recognize 10 specific wound categories:
+1. **1st Degree Burn** (Luka bakar derajat 1)
+2. **2nd Degree Burn** (Luka bakar derajat 2)
+3. **3nd Degree Burn** (Luka bakar derajat 3)
+4. **Abrasions** (Luka lecet)
+5. **Bruises** (Luka memar)
+6. **Burns** (Luka bakar umum)
+7. **Cut** (Luka sayat)
+8. **Ingrown Nails** (Cantengan)
+9. **Laceration** (Luka robek)
+10. **Stab Wound** (Luka tusuk)
+
+### Training & Optimization Pipeline
+- **Optimizer**: Adam (learning rate = `0.0001` / `1e-4` for stable convergence).
+- **Loss Function**: Categorical Crossentropy.
+- **Max Epochs**: 100 epochs, monitored by **Early Stopping** with a patience of 5 epochs on validation loss to prevent overfitting.
+- **Custom Convergence Callback**: Training automatically stops once both training accuracy and validation accuracy exceed **75%**.
+- **Model Serialization**: Saved as a Keras `.h5` model format for flexible integration with Flask backend or TensorFlow Lite conversion.
 </ProjectStandard>

@@ -1,0 +1,37 @@
+---
+name: 'Alfajr E-Learning'
+date: '2025-11-20'
+featured: true
+category: 'Web'
+
+thumbnail: '/src/assets/projects/alfajr-elearning/thumbnail.png'
+codeUrl: 'https://github.com/difadlyaulhaq/alfajr-elearning'
+
+projectPageVersion: 'standard'
+tags:
+  - 'Next.js'
+  - 'Capacitor'
+  - 'Firebase'
+  - 'Tailwind CSS'
+  - 'Docker'
+  - 'VPS'
+
+mainTags:
+  - 'Next.js'
+  - 'Docker'
+  - 'Capacitor'
+
+images:
+  - '/src/assets/projects/alfajr-elearning/thumbnail.png'
+---
+import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
+
+<ProjectStandard project={frontmatter}>
+Alfajr E-Learning is a comprehensive corporate E-Learning management system built for **Alfajr Umroh** using Next.js 15 (App Router, React 19) and Capacitor, optimized for both web and mobile experiences. Deployed using Docker on a VPS, the platform provides a secure corporate training ecosystem featuring advanced video protection, real-time progress tracking, and an intuitive administrative interface.
+
+Key achievements on this project:
+- Designed and built a secure learning portal using Firebase for Authentication and Firestore.
+- Configured secure video delivery through Bunny.net with user-specific watermarks.
+- Implemented mobile protection features (screen capture/recording prevention) using native Capacitor plugins.
+- Containerized the application using Docker and deployed it onto a Virtual Private Server (VPS).
+</ProjectStandard>
