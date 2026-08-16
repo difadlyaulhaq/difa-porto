@@ -1,6 +1,7 @@
 // src/components/About/experienceData.js
 
 import alfajrImg from "../../assets/about/experience/alfajr_work.png"; 
+import elearningKomputerImg from "../../assets/projects/elearning-komputer/thumbnail.png"; 
 //bangkit
 import bangkitImg from "../../assets/about/experience/bangkit_cert.png"; 
 import bangkitImg2 from "../../assets/about/experience/Bangkit-meet.png";
@@ -31,9 +32,31 @@ export const experiences = [
   {
     id: 1,
     type: 'work',
+    image: elearningKomputerImg,
+    logo: freelanceLogo,
+    title: 'Software Developer (Independent Freelancer)',
+    role: 'E-Learning Komputer',
+    period: 'Jun 2026 - Aug 2026',
+    location: 'Remote',
+    description: 'Developed a responsive and secure e-learning management platform to deliver high-quality computer science courses, optimized for both web and mobile access.',
+    highlights: [
+      'Engineered a robust Next.js 15 web application integrated with Capacitor for native Android app output.',
+      'Implemented advanced video copyright protection featuring user-identity dynamic watermark overlays.',
+      'Blocked unauthorized screen captures and recordings on mobile devices using native security plugins.',
+      'Configured Firebase Authentication and Firestore database for secure user sessions and real-time progress tracking.'
+    ],
+    skills: ['Next.js 15', 'Capacitor', 'Firebase', 'Tailwind CSS', 'Docker', 'Android'],
+    achievements: [
+      'Successfully delivered a secure, responsive, and cross-platform e-learning application.',
+      'Gained hands-on experience in native mobile app wrapping and content protection mechanisms.'
+    ]
+  },
+  {
+    id: 2,
+    type: 'work',
     image: alfajrImg,
     logo: alfajrLogo,
-    title: 'Software Developer (Freelance)',
+    title: 'Software Developer (Independent Freelancer)',
     role: 'Alfajr Umroh',
     period: 'Nov 2025 - Dec 2025',
     location: 'Remote',
@@ -51,7 +74,7 @@ export const experiences = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     type: 'education',
     image: [bangkitImg, bangkitImg2],
     logo: bangkitLogo,
@@ -73,12 +96,12 @@ export const experiences = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     type: 'organization',
     image: [amccImg,amccImg2,amccImg3,amccImg4],
     logo: amccLogo,
     title: 'Amikom Computer Club (AMCC)',
-    role: 'Coordinator & Mentor',
+    role: 'Coordinator Mobile Programming Division & Human Resources Department',
     period: 'Nov 2023 - Nov 2025',
     location: 'Yogyakarta',
     description: 'Where I learned that code is better when shared. I transitioned from a mentor to a leader, managing people and technical divisions in one of the largest tech communities on campus.',
@@ -95,7 +118,7 @@ export const experiences = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     type: 'award',
     image: [competitionImg, competitionImg2, competitionImg3,competitionImg4,competitionImg5],
     logo: amikomLogo, // Placeholder
@@ -116,7 +139,7 @@ export const experiences = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     type: 'education',
     image: campusImg,
     logo: amikomLogo,

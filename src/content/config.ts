@@ -46,6 +46,7 @@ const projects = defineCollection({
     thumbnail: image(),
     date: z.coerce.date(),
     featured: z.boolean().optional(),
+    category: z.string().optional(),
 
     video: z.string().optional(),
 

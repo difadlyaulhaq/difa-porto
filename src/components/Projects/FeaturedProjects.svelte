@@ -8,6 +8,9 @@
 
   // Helper function to map a project to its category based on tags & title
   function getCategory(project) {
+    if (project.category) {
+      return project.category;
+    }
     const tags = (project.tags || []).map(t => t.toLowerCase());
     const title = (project.title || "").toLowerCase();
     
@@ -62,7 +65,7 @@
   </div>
 
   <!-- Projects Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
     {#each filteredProjects as project (project.slug)}
       <a 
         href={`/projects/${project.slug}`}
@@ -70,30 +73,32 @@
       >
         <!-- Image Card -->
         <div 
-          class="relative w-full rounded-2xl overflow-hidden border border-zinc-200 bg-zinc-50 shadow-md transition-all duration-500 group-hover:border-zinc-300 group-hover:-translate-y-1 group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.1)]"
+          class="relative w-full rounded-[24px] overflow-hidden border border-zinc-100 bg-zinc-50 transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
           style="aspect-ratio: 16 / 9;"
         >
           <img 
             src={project.image} 
             alt={project.title} 
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             loading="lazy"
           />
         </div>
 
-        <!-- Project Info -->
-        <div class="space-y-1">
-          <div class="flex items-center justify-between gap-3">
-            <h3 class="text-lg md:text-xl font-bold text-zinc-900 group-hover:text-sky-600 transition-colors leading-tight">
-              {project.title}
-            </h3>
-            <span class="px-2.5 py-0.5 text-[10px] font-bold rounded-full bg-zinc-100 border border-zinc-200 text-zinc-500 uppercase tracking-wider whitespace-nowrap">
-              {getCategory(project)}
-            </span>
+        <!-- Project Title & Link (Row layout like screenshot) -->
+        <div class="flex items-center gap-3.5 pt-2 px-1">
+          <!-- Circle Arrow Icon -->
+          <div class="flex-shrink-0 text-zinc-800 transition-transform duration-300 group-hover:translate-x-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 12h8"/>
+              <path d="m12 16 4-4-4-4"/>
+            </svg>
           </div>
-          <p class="text-sm text-zinc-500 line-clamp-2 leading-relaxed pt-1 font-medium">
-            {project.description}
-          </p>
+          
+          <!-- Project Title -->
+          <h3 class="text-xl md:text-[22px] font-medium text-zinc-900 leading-tight tracking-tight transition-colors duration-300 group-hover:text-blue-600">
+            {project.title}
+          </h3>
         </div>
       </a>
     {/each}

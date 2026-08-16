@@ -14,6 +14,6 @@
     class="block py-2 font-medium {active == current ? 'text-violet-600 font-bold' : 'text-zinc-600'}"
     on:click={hide}
   >
-    {current}
+    {current === 'certifications' ? 'Licenses & Certifications' : current}
   </a>
 </li>

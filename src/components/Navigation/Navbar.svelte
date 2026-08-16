@@ -45,7 +45,7 @@
             href={`/#${item}`} 
             class="text-sm font-bold transition-colors relative py-1 uppercase tracking-wider {active === item ? 'text-zinc-900' : 'text-zinc-500 hover:text-zinc-900'}"
           >
-            {item}
+            {item === 'certifications' ? 'Licenses & Certifications' : item}
             {#if active === item}
               <div class="absolute left-0 top-full block h-[2px] w-full bg-zinc-900 rounded-full"></div>
             {/if}

@@ -14,6 +14,7 @@ type Props = {
       shortDescription?: string;
       description?: string;
       tags?: Array<string>;
+      category?: string;
     };
   }>;
 };
@@ -35,6 +36,7 @@ const processedProjects = await Promise.all(
       image: optimizedImage.src,
       tags: project.data.mainTags || project.data.tags || [],
       description: project.data.shortDescription || project.data.description || "",
+      category: project.data.category || "",
     };
   })
 );
