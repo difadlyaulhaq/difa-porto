@@ -1,38 +1,47 @@
+---
 name: 'Seamless Ewallet'
 date: '2025-04-20'
 featured: true
 category: 'Mobile'
+
 thumbnail: '/src/assets/projects/seamless-e-wallet/thumbnail.png'
 video: '/src/assets/projects/seamless-e-wallet/video-thumbnail.mp4'
 aspect: 'aspect-[9/19]'
 codeUrl: 'https://github.com/difadlyaulhaq/seamless-ewallet'
 projectUrl: 'https://github.com/difadlyaulhaq/seamless-ewallet'
+
 description: 'An e-wallet application featuring digital transaction processing and a dedicated Laravel web admin backend.'
 projectPageVersion: 'standard'
 tags:
- * 'flutter'
- * 'Payment gateway'
- * 'laravel'
- * 'Tailwind CSS'
- * 'Alpine.js'
+  - 'flutter'
+  - 'Payment gateway'
+  - 'laravel'
+  - 'Tailwind CSS'
+  - 'Alpine.js'
+
 mainTags:
- * 'laravel'
- * 'Flutter'
+  - 'laravel'
+  - 'Flutter'
+
 images:
- * '/src/assets/projects/seamless-e-wallet/image1.png'
- * '/src/assets/projects/seamless-e-wallet/image2.png'
- * '/src/assets/projects/seamless-e-wallet/screenshot1.png'
- * '/src/assets/projects/seamless-e-wallet/screenshot2.png'
- * '/src/assets/projects/seamless-e-wallet/screenshot3.png'
- * '/src/assets/projects/seamless-e-wallet/screenshot4.png'
- * '/src/assets/projects/seamless-e-wallet/screenshot5.png'
+  - '/src/assets/projects/seamless-e-wallet/image1.png'
+  - '/src/assets/projects/seamless-e-wallet/image2.png'
+  - '/src/assets/projects/seamless-e-wallet/screenshot1.png'
+  - '/src/assets/projects/seamless-e-wallet/screenshot2.png'
+  - '/src/assets/projects/seamless-e-wallet/screenshot3.png'
+  - '/src/assets/projects/seamless-e-wallet/screenshot4.png'
+  - '/src/assets/projects/seamless-e-wallet/screenshot5.png'
+---
 import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
-<ProjectStandard project="{frontmatter}">
+
+<ProjectStandard project={frontmatter}>
 Seamless is an e-wallet application designed to simplify daily digital financial transactions. Built with Flutter, the mobile app focuses on providing a smooth user experience for managing balances, transferring funds, and processing digital payments.
-Admin Panel & Backend Engine
-To support the mobile app, a dedicated web admin dashboard and backend API engine were built using Laravel 12, Tailwind CSS v4, and Alpine.js. This admin panel serves as the central control room and core REST API supplier:
- * Centralized Management: A secure admin dashboard to manage user accounts, monitor e-wallet transactions, and handle system configurations.
- * REST API Backend: Securely manages user authentication, processes transactions, and supplies data endpoints for the Flutter mobile frontend.
- * Future Roadmap: Planned additions include a KYC (Know Your Customer) identity verification module and an enhanced transaction ledger system to maintain precise financial logs.
-Explore the backend source code on the web-admin branch.
+
+### Admin Panel & Backend Engine
+To support the mobile app, a dedicated web admin dashboard and backend API engine were built using **Laravel 12**, **Tailwind CSS v4**, and **Alpine.js**. This admin panel serves as the central control room and core REST API supplier:
+- **Centralized Management:** A secure admin dashboard to manage user accounts, monitor e-wallet transactions, and handle system configurations.
+- **REST API Backend:** Securely manages user authentication, processes transactions, and supplies data endpoints for the Flutter mobile frontend.
+- **Future Roadmap:** Planned additions include a KYC (Know Your Customer) identity verification module and an enhanced transaction ledger system to maintain precise financial logs.
+
+Explore the backend source code on the [web-admin branch](https://github.com/difadlyaulhaq/seamless-ewallet/tree/web-admin).
 </ProjectStandard>
