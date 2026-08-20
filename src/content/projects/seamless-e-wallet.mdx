@@ -1,47 +1,38 @@
----
 name: 'Seamless Ewallet'
 date: '2025-04-20'
 featured: true
 category: 'Mobile'
-
 thumbnail: '/src/assets/projects/seamless-e-wallet/thumbnail.png'
 video: '/src/assets/projects/seamless-e-wallet/video-thumbnail.mp4'
 aspect: 'aspect-[9/19]'
 codeUrl: 'https://github.com/difadlyaulhaq/seamless-ewallet'
 projectUrl: 'https://github.com/difadlyaulhaq/seamless-ewallet'
-
-description: 'An e-wallet application featuring automated expense tracking, cryptocurrency integration, and DeepSeek AI advice.'
+description: 'An e-wallet application featuring digital transaction processing and a dedicated Laravel web admin backend.'
 projectPageVersion: 'standard'
 tags:
-  - 'flutter'
-  - 'Payment gateway'
-  - 'laravel'
-  - 'Tailwind CSS'
-  - 'Alpine.js'
-
+ * 'flutter'
+ * 'Payment gateway'
+ * 'laravel'
+ * 'Tailwind CSS'
+ * 'Alpine.js'
 mainTags:
-  - 'laravel'
-  - 'Flutter'
-
+ * 'laravel'
+ * 'Flutter'
 images:
-  - '/src/assets/projects/seamless-e-wallet/image1.png'
-  - '/src/assets/projects/seamless-e-wallet/image2.png'
-  - '/src/assets/projects/seamless-e-wallet/screenshot1.png'
-  - '/src/assets/projects/seamless-e-wallet/screenshot2.png'
-  - '/src/assets/projects/seamless-e-wallet/screenshot3.png'
-  - '/src/assets/projects/seamless-e-wallet/screenshot4.png'
-  - '/src/assets/projects/seamless-e-wallet/screenshot5.png'
----
+ * '/src/assets/projects/seamless-e-wallet/image1.png'
+ * '/src/assets/projects/seamless-e-wallet/image2.png'
+ * '/src/assets/projects/seamless-e-wallet/screenshot1.png'
+ * '/src/assets/projects/seamless-e-wallet/screenshot2.png'
+ * '/src/assets/projects/seamless-e-wallet/screenshot3.png'
+ * '/src/assets/projects/seamless-e-wallet/screenshot4.png'
+ * '/src/assets/projects/seamless-e-wallet/screenshot5.png'
 import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
-
-<ProjectStandard project={frontmatter}>
-Seamless is an ongoing e-wallet product designed to simplify personal finance management. It offers core features like digital payments, automated expense tracking on every transaction, and DeepSeek AI chat integration for real-time financial guidance—planned to be hyper-tuned for personalized finance advice. The app also aims to integrate with Indodax to enable seamless access to cryptocurrency services.
-
-### Seamless Admin & Backend Engine
-To support the mobile ecosystem, a dedicated admin panel and backend engine have been developed using **Laravel 12**, **Tailwind CSS v4**, and **Alpine.js**. The dashboard operates as the central control center and REST API provider:
-- **Centralized Management:** A secure, authenticated panel featuring SQLite database initialization, route protection, and a rebranded premium UI for managing the e-wallet's operational data.
-- **REST API Backend:** Serves as the core engine to handle mobile requests, auth, transactions, and user data securely.
-- **Future Roadmap:** Planned integrations include a KYC (Know Your Customer) approval module for identity verification and a robust double-entry ledger system to securely track all financial flows (top-ups, transfers, and data plan purchases).
-
-Explore the backend source code on the [web-admin branch](https://github.com/difadlyaulhaq/seamless-ewallet/tree/web-admin).
+<ProjectStandard project="{frontmatter}">
+Seamless is an e-wallet application designed to simplify daily digital financial transactions. Built with Flutter, the mobile app focuses on providing a smooth user experience for managing balances, transferring funds, and processing digital payments.
+Admin Panel & Backend Engine
+To support the mobile app, a dedicated web admin dashboard and backend API engine were built using Laravel 12, Tailwind CSS v4, and Alpine.js. This admin panel serves as the central control room and core REST API supplier:
+ * Centralized Management: A secure admin dashboard to manage user accounts, monitor e-wallet transactions, and handle system configurations.
+ * REST API Backend: Securely manages user authentication, processes transactions, and supplies data endpoints for the Flutter mobile frontend.
+ * Future Roadmap: Planned additions include a KYC (Know Your Customer) identity verification module and an enhanced transaction ledger system to maintain precise financial logs.
+Explore the backend source code on the web-admin branch.
 </ProjectStandard>
