@@ -8,6 +8,6 @@ export const ACCENT_COLOR = 'sky';
 export const SOCIALS = {
 	GITHUB: 'https://github.com/difadlyaulhaq',
 	LINKEDIN: 'https://www.linkedin.com/in/difa-dlyaulhaq/',
-	MAIL: 'mailto:difadlyaulhaq2@gmail.com',
+	MAIL: 'mailto:dlyaulhaqdifa@gmail.com',
 };
   
