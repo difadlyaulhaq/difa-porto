@@ -149,7 +149,7 @@ export const experiences = [
     location: 'Yogyakarta',
     description: 'Currently pursuing my degree with a focus on Software Engineering. I strive to apply every theory I learn in class directly to real-world projects.',
     highlights: [
-      'Current GPA: 3.71 / 4.00.',
+      'Current GPA: 3.72 / 4.00.',
       'Thesis Topic: Applying Transformer Models for Named Entity Recognition (NER) in literature.',
       'Active participant in bridging the gap between academic research and practical industry application.'
     ],
