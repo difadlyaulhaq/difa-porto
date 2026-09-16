@@ -1,0 +1,58 @@
+---
+name: 'Carigaya'
+date: '2025-10-09'
+featured: true
+category: 'Mobile'
+
+thumbnail: '/src/assets/projects/carigaya/logo.png'
+youtube: 'https://youtu.be/MFsub6ORLgM?si=QnGqWW6xSOWCulRB'
+video: 'https://youtu.be/MFsub6ORLgM?si=QnGqWW6xSOWCulRB'
+aspect: 'aspect-video'
+codeUrl: 'https://github.com/LOOKSMAXINGS/carigaya-app'
+projectUrl: 'https://github.com/LOOKSMAXINGS/carigaya-app'
+
+description: 'A modern Android mobile e-commerce & styling application built with Kotlin, Jetpack Compose, and Material Design 3.'
+projectPageVersion: 'standard'
+tags:
+  - 'Android'
+  - 'Kotlin'
+  - 'Jetpack Compose'
+  - 'Material Design 3'
+  - 'Retrofit'
+  - 'Coroutines'
+  - 'LiteRT'
+
+mainTags:
+  - 'Kotlin'
+  - 'Jetpack Compose'
+  - 'Android'
+
+images:
+  - '/src/assets/projects/carigaya/logo.png'
+---
+import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
+
+<ProjectStandard project={frontmatter}>
+**Carigaya** is a modern Android mobile e-commerce and fashion styling application designed to simplify how users explore, filter, and shop for apparel and curated fashion items. Built natively with modern Android engineering standards, the app delivers a fluid, aesthetic shopping experience powered by Jetpack Compose and Material Design 3.
+
+### Key Features & User Flow
+- **Product Discovery & Search**: Browse curated fashion collections and search products in real-time with instant response.
+- **Interactive Filter Bottom Sheet**: Quickly filter products by category and price brackets using an intuitive bottom sheet modal.
+- **Product Showcase & Details**: High-resolution image galleries with asynchronous image loading via Coil, detailed item descriptions, pricing, and variant selection.
+- **Cart & Order Checkout Flow**: Real-time cart state management with quantity adjustments, automated total calculation, shipping address selection, and instant order placement with confirmation screens.
+- **User Authentication & Profile**: Seamless sign-up and login flows, secured session management with Jetpack DataStore, and account settings.
+
+### Technical Architecture & Stack
+1. **Declarative UI (Jetpack Compose & Material 3)**:
+   - Modern, reactive UI architecture using 100% Kotlin and Jetpack Compose.
+   - Beautiful Material Design 3 aesthetic with dynamic styling, smooth transitions, and modular UI components.
+2. **Architecture & State Management (MVVM + Coroutines)**:
+   - Clean Architecture pattern decoupling ViewModels, Repositories, and Data Sources.
+   - Asynchronous data streaming and state management powered by Kotlin Coroutines and StateFlow.
+3. **Networking & Persistence Layer**:
+   - RESTful API communication powered by **Retrofit 2** and **OkHttp** with interceptors and Gson serialization.
+   - Secure token storage and user preferences powered by **AndroidX DataStore**.
+4. **Navigation & Performance**:
+   - Single-Activity architecture with structured routing powered by **Jetpack Navigation Compose**.
+   - Optimized asset handling and memory caching with **Coil Compose**.
+</ProjectStandard>

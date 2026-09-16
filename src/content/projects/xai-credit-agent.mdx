@@ -1,0 +1,68 @@
+---
+name: 'XAI Credit Agent'
+date: '2026-08-15'
+featured: true
+category: 'AI'
+
+thumbnail: '/src/assets/projects/xai-credit-agent/thumbnail.png'
+youtube: 'https://youtu.be/n_SWz69BWw8?si=6KwckUpc6WIrjIdV'
+aspect: 'aspect-video'
+projectUrl: 'https://github.com/difadlyaulhaq/xai-credit-agent'
+codeUrl: 'https://github.com/difadlyaulhaq/xai-credit-agent'
+
+description: 'An explainable AI & agentic credit risk underwriting system powered by fine-tuned Qwen 2.5 (QLoRA), XGBoost, and SHAP.'
+projectPageVersion: 'standard'
+tags:
+  - 'AI'
+  - 'Machine Learning'
+  - 'Explainable AI'
+  - 'LLM'
+  - 'QLoRA'
+  - 'Qwen 2.5'
+  - 'XGBoost'
+  - 'SHAP'
+  - 'Streamlit'
+  - 'Python'
+  - 'Ollama'
+
+mainTags:
+  - 'AI'
+  - 'Machine Learning'
+  - 'Explainable AI'
+  - 'LLM'
+
+images:
+  - '/src/assets/projects/xai-credit-agent/thumbnail.png'
+---
+import ProjectStandard from "$components/ProjectPages/ProjectStandard.astro";
+
+<ProjectStandard project={frontmatter}>
+**XAI Credit Agent** is an end-to-end Explainable AI (XAI) and agentic credit underwriting system designed to modernize credit risk assessment. By fusing classical predictive machine learning, mathematical model explainability, and parameter-efficient fine-tuned Large Language Models (LLMs), the system automates the generation of compliant, audit-ready credit underwriting memos.
+
+### Technical Overview & Architecture
+Traditional credit scoring models often operate as opaque black boxes, leaving loan officers with little context on why an applicant was approved or denied. **XAI Credit Agent** solves this through a multi-tiered intelligent pipeline:
+
+1. **Predictive ML Layer (XGBoost & LightGBM)**:
+   - High-performance gradient boosted decision trees calculate the **Probability of Default (PD)** with exceptional discrimination accuracy (**ROC-AUC: 0.9509**, **F1-Score: 0.8157**).
+   - Evaluates multidimensional financial features including Debt-to-Income (DTI), loan-to-income percentage, bureau delinquency history, employment tenure, and home ownership status.
+
+2. **Explainable AI Layer (SHAP TreeExplainer)**:
+   - Derives exact Game-Theoretic Shapley values (*SHAP*) for each financial applicant in real time.
+   - Extracts individual *Feature Attribution* and risk drivers (e.g., loan-to-income ratio adding +0.42 risk, clean historical repayment reducing -0.28 risk), ensuring transparent, regulatory-compliant decisions.
+
+3. **Fine-Tuned Generative LLM Layer (Qwen 2.5 via QLoRA)**:
+   - Fine-tuned **Qwen 2.5 (3B-Instruct)** using **QLoRA (4-bit NF4)** with Hugging Face `peft` and `trl`.
+   - Ingests raw applicant metrics coupled with SHAP risk driver explanations to generate structured, audit-ready **Credit Underwriting Memos** formatted in JSON with rationale, suggested APR, and risk mitigation covenants.
+
+4. **Local & Privacy-Preserving Inference**:
+   - Deployed locally via **Ollama / vLLM** and local PyTorch runtimes. Sensitive customer financial data (PII) is processed entirely on-premise without transmitting unencrypted data to third-party cloud APIs.
+
+5. **Interactive Underwriter Dashboard**:
+   - Built with **Streamlit**, offering loan officers an interactive interface featuring default probability gauges, SHAP waterfall charts, and real-time LLM memo synthesis.
+
+### Key Performance Benchmarks
+- **Predictive ROC-AUC**: **0.9509** (XGBoost default classifier)
+- **F1-Score**: **0.8157** at optimal threshold
+- **LLM Adapter Footprint**: **57.1 MB** (4-bit quantized LoRA adapter for fast GPU/CPU local inference)
+- **Compliance & Transparency**: 100% explainable credit decisions with verifiable mathematical attribution
+</ProjectStandard>

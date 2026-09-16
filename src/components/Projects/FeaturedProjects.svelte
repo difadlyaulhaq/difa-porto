@@ -19,10 +19,12 @@
     
     // Check AI first (specifically AI, Machine Learning, ML, NLP, PyTorch, Hugging Face, LoRA, RoBERTa, etc.)
     if (
-      tags.some(t => ['ai', 'machine learning', 'ml', 'nlp', 'pytorch', 'hugging face', 'lora', 'roberta'].includes(t)) ||
+      tags.some(t => ['ai', 'machine learning', 'ml', 'nlp', 'pytorch', 'hugging face', 'lora', 'roberta', 'xai', 'llm'].includes(t)) ||
       title.includes('lora') || 
       title.includes('roberta') ||
-      title.includes('web risk')
+      title.includes('web risk') ||
+      title.includes('credit') ||
+      title.includes('xai')
     ) {
       return 'AI';
     }

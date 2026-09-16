@@ -49,6 +49,7 @@ const projects = defineCollection({
     category: z.string().optional(),
 
     video: z.string().optional(),
+    youtube: z.string().optional(),
 
     mainTags: z.array(z.string()).optional(),
 
