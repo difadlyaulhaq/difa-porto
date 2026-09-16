@@ -15,6 +15,17 @@ const projectImages = await Promise.all(
 );
 
 const aspectClass = project.aspect || "aspect-video";
+
+function getYoutubeEmbedUrl(url: string) {
+  if (!url) return "";
+  if (url.includes("/embed/")) return url;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length === 11) {
+    return `https://www.youtube.com/embed/${match[2]}?rel=0`;
+  }
+  return url;
+}
 ---
 
 <div class="text-zinc-800 font-sans min-h-screen bg-white relative overflow-hidden">
@@ -28,9 +39,24 @@ const aspectClass = project.aspect || "aspect-video";
   <div class="relative pt-6 sm:pt-24 font-sans">
     <ProjectBreadcrumb name={project.name} />
 
-    <!-- Dynamic Image Gallery -->
+    <!-- Dynamic Media (YouTube Video or Image Gallery) -->
     {
-      project.images ? (
+      project.youtube ? (
+        <div class="mx-auto mt-8 max-w-2xl px-4 sm:px-6 md:max-w-5xl md:px-8">
+          <div
+            class="group relative w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 shadow-xl shadow-zinc-200/50 hover:border-zinc-300 transition-all duration-500"
+            style="aspect-ratio: 16 / 9;"
+          >
+            <iframe
+              src={getYoutubeEmbedUrl(project.youtube)}
+              title={`${project.name} Video Demo`}
+              class="absolute inset-0 w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      ) : project.images ? (
         <div class="mx-auto mt-8 max-w-2xl px-4 sm:px-6 md:max-w-5xl md:px-8">
           <div class={`grid grid-cols-1 ${project.aspect?.includes('9/19') || project.aspect?.includes('9/16') ? 'sm:grid-cols-2 md:grid-cols-6' : 'md:grid-cols-2'} gap-6 md:gap-8 items-start`}>
             {projectImages.map((img, i) => {

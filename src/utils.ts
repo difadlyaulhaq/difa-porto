@@ -8,13 +8,14 @@ export function cn(...inputs: ClassValue[]) {
 
 const prioritySlugs = [
   'sigap', 
+  'carigaya',
+  'xai-credit-agent',
   'lora-roberta',
   'web-risk-content-analyzer',
   'alfajr-elearning',
   'meeting-in', 
   'digiri',
   'seamless-e-wallet',
-  'meeting-in',
   'wise',
   'elearning-komputer',
   'multilingual-sa',

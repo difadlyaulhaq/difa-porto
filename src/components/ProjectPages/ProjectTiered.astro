@@ -13,6 +13,17 @@ const images = import.meta.glob(
 const projectImages = await Promise.all(
   (project.images || []).map(async (image: string) => images[image])
 );
+
+function getYoutubeEmbedUrl(url: string) {
+  if (!url) return "";
+  if (url.includes("/embed/")) return url;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length === 11) {
+    return `https://www.youtube.com/embed/${match[2]}?rel=0`;
+  }
+  return url;
+}
 ---
 
 <div class="min-h-screen bg-white text-zinc-800 relative overflow-hidden">
@@ -42,8 +53,23 @@ const projectImages = await Promise.all(
           </div>
         </div>
 
-        {/* Image gallery with enhanced cards */}
-        <div class="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
+        {/* Image gallery & video with enhanced cards */}
+        <div class="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0 space-y-6">
+          {project.youtube && (
+            <div
+              class="group relative w-full overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-950 shadow-xl shadow-zinc-200/50 hover:border-zinc-300 transition-all duration-500"
+              style="aspect-ratio: 16 / 9;"
+            >
+              <iframe
+                src={getYoutubeEmbedUrl(project.youtube)}
+                title={`${project.name} Video Demo`}
+                class="absolute inset-0 w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          )}
+
           {project.images ? (
             <>
               <h2 class="sr-only">Images</h2>
